@@ -14,6 +14,7 @@ import HomeSlider from '../components/home/home-slider';
 import HomeStepOrder from '../components/home/home-step-order';
 import HomeQuestionStart from '../components/home/home-question-start';
 import AllFocusCategory from '../components/home/all-focus-category';
+import HomeCategoryProduct from '../components/home/home-category-product';
 
 const HomePage = () => {
   const user = useStore('user');
@@ -24,6 +25,8 @@ const HomePage = () => {
       <HomeStepOrder />
       <HomeQuestionStart />
       <AllFocusCategory />
+      <HomeCategoryProduct />
+
     </Page>
   );
 }

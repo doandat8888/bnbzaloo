@@ -1,5 +1,6 @@
 import config from '../config'
 import store from '../store'
+import {loadDataArrayFromCache , saveDataArrayToCache } from './storage'
 
 
 
@@ -144,8 +145,20 @@ export const getPlacedOrders = async () => {
  */
 export const getSliders = async () => {
   try {
-    const response = await (await request('GET', 'API/sliders?callback=ok')).json()
-    return response.sliders ?? []
+    // get from cache
+    const items = await loadDataArrayFromCache("getSliders")
+    if(items != null){
+      return items
+    }
+
+    const response = await (await request('GET', 'API/sliders')).json()
+    const ret = response.sliders ?? []
+
+    // save to cache
+    saveDataArrayToCache("getSliders", ret)
+
+    return ret
+
   } catch (error) {
     console.log('Error fetching sliders. Details: ', error)
     return []
@@ -153,16 +166,55 @@ export const getSliders = async () => {
 }
 
 /**
- * Lấy danh sách focus caterogies
+ * Lấy danh sách focus categories
  * @returns Danh sách những danh mục được chỉ định ở trang chủ
  */
  export const getAllFocusCategory = async () => {
   try {
+
+    // get from cache
+    const items = await loadDataArrayFromCache("getAllFocusCategory")
+    if(items != null){
+      return items
+    }
+
     const response = await (await request('GET', 'API/load/mainAllCategory')).json()
-    return response.allCategories ?? []
+    const results  =  response.allCategories ?? []
+
+    // save to cache
+    saveDataArrayToCache("getAllFocusCategory", results)
+
+    return results
+
   } catch (error) {
     console.log('Error fetching getAllFocusCategory. Details: ', error)
     return []
   }
 }
+
+/**
+ * Lấy danh sách categories và sản phẩm
+ * @returns Danh sách những danh mục được chỉ định ở trang chủ
+ */
+ export const getHomeCategoryProduct = async () => {
+  try {
+
+    // get from cache
+    const items = await loadDataArrayFromCache("getHomeCategoryProduct")
+    if(items != null){
+      return items
+    }
+
+    const response = await (await request('GET', 'API/load/mainFocusCates')).json()
+
+    // save to cache
+    saveDataArrayToCache("getHomeCategoryProduct", response)
+
+    return response
+  } catch (error) {
+    console.log('Error fetching getHomeCategoryProduct. Details: ', error)
+    return []
+  }
+}
+
 

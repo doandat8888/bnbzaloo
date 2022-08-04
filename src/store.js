@@ -2,10 +2,9 @@
 import { createStore } from 'zmp-core/lite'
 import { zmp } from 'zmp-framework/react'
 import { checkout, getCurrentUser, getPlacedOrders, getProductsByCategory, login } from './services/bnb'
-import { loadProductsFromCache, saveProductsToCache, loadUserFromCache } from './services/storage'
 import { follow, getAccessToken } from './services/zalo'
 import { initToken } from './services/bnb'
-import { loadTokenFromCache, saveTokenToCache } from './services/storage'
+import { loadTokenFromCache, loadUserFromCache, saveTokenToCache } from './services/storage'
 
 const store = createStore({
   state: {

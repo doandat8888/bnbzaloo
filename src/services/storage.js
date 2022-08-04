@@ -23,3 +23,51 @@ export const saveProductsToCache = async products => {
   })
   return products
 }
+
+export const loadUserFromCache = () => new Promise(resolve => {
+  api.getStorage({
+    keys: ['user'],
+    success: ({ user }) => {
+      if (user) {
+        resolve(user)
+      }
+      resolve()
+    },
+    fail: (error) => {
+      console.log('Failed to load user from cache. Details: ', error)
+      resolve()
+    }
+  })
+})
+
+export const saveUserToCache = async user => {
+  await api.setStorage({
+    data: { user },
+    fail: (error) => console.log('Failed to save user to cache. Details: ', error)
+  })
+  return user
+}
+
+export const saveTokenToCache = async token => {
+  await api.setStorage({
+    data: { token },
+    fail: (error) => console.log('Failed to save token to cache. Details: ', error)
+  })
+  return token
+}
+
+export const loadTokenFromCache = () => new Promise(resolve => {
+  api.getStorage({
+    keys: ['token'],
+    success: ({ token }) => {
+      if (token) {
+        resolve(token)
+      }
+      resolve()
+    },
+    fail: (error) => {
+      console.log('Failed to load token from cache. Details: ', error)
+      resolve()
+    }
+  })
+})

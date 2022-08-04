@@ -5,7 +5,7 @@ import store from '../store';
 const MyApp = () => {
   // ZMP Parameters
   const zmpparams = {
-    name: 'BNB_Zalo', // App name
+    name: 'Beloved & Beyond', // App name
     theme: 'auto', // Automatic theme detection
     // App store
     store: store,
@@ -13,6 +13,7 @@ const MyApp = () => {
   useEffect(() => {
     zmpready(() => {
       // Call ZMP APIs here
+      store.dispatch('login')
     });
   }, [])
 
@@ -23,13 +24,13 @@ const MyApp = () => {
         {/* Tabbar for switching Tab*/}
         <Tabbar bottom id="app-tab-bar">
           <Link tabLink="#view-home" iconZMP="zi-home" tabLinkActive>
-            Home
+            Trang chủ
           </Link>
           <Link tabLink="#view-catalog" iconZMP="zi-list-1">
-            Catalog
+            Ghi nhớ
           </Link>
           <Link tabLink="#view-settings" iconZMP="zi-setting">
-            Settings
+            Người dùng
           </Link>
         </Tabbar>
 

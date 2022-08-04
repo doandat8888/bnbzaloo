@@ -1,13 +1,15 @@
 import config from '../config'
 import store from '../store'
 
+
+
 const base = config.BASE_URL
 
 export const request = async (method, url, data) => {
   const headers = { 'Content-Type': 'application/json' }
-  const token = store.state.jwt
+  const token = store.state.token
   if (token) {
-    headers.Authorization = `Bearer ${token}`
+    headers['X-Xto-Access-Token'] = token
   }
 
   return fetch(`${base}/${url}`, {
@@ -17,9 +19,59 @@ export const request = async (method, url, data) => {
   })
 }
 
+export const initToken = async () => {
+  try {
+    const response = await (await request('GET', 'API/initToken')).json()
+    if (response.token) {
+      store.dispatch('setToken', response.token)
+      return true
+    } else {
+      return false
+    }
+  } catch (error) {
+    console.log('Error logging in. Details: ', error)
+    return false
+  }
+}
+
+export const checkUser = async (user) => {
+  try {
+    const response = await (await request('POST', 'API/zalo/chk', {
+      source:'zalo', id: user.zaloId
+    })).json()
+    if (response.user) {
+      store.dispatch('setUser', response.user)
+      return true
+    } else {
+      return false
+    }
+  } catch (error) {
+    console.log('Error check user exist. Details: ', error)
+    return false
+  }
+}
+
+export const createUser = async (user) => {
+  try {
+    const response = await (await request('POST', '/API/tiki/attach', {
+      source:'zalo', id: user.zaloId
+    })).json()
+    if (response.user) {
+      store.dispatch('setUser', response.user)
+      return true
+    } else {
+      return false
+    }
+  } catch (error) {
+    console.log('Error check user exist. Details: ', error)
+    return false
+  }
+}
+
+
 export const login = async (accessToken) => {
   try {
-    const response = await (await request('POST', 'users/login', {
+    const response = await (await request('POST', 'API/login', {
       accessToken
     })).json()
     if (response.data.jwt) {
@@ -85,3 +137,32 @@ export const getPlacedOrders = async () => {
     return []
   }
 }
+
+/**
+ * Lấy danh sách banner
+ * @returns Danh sách những banner
+ */
+export const getSliders = async () => {
+  try {
+    const response = await (await request('GET', 'API/sliders?callback=ok')).json()
+    return response.sliders ?? []
+  } catch (error) {
+    console.log('Error fetching sliders. Details: ', error)
+    return []
+  }
+}
+
+/**
+ * Lấy danh sách focus caterogies
+ * @returns Danh sách những danh mục được chỉ định ở trang chủ
+ */
+ export const getAllFocusCategory = async () => {
+  try {
+    const response = await (await request('GET', 'API/load/mainAllCategory')).json()
+    return response.allCategories ?? []
+  } catch (error) {
+    console.log('Error fetching getAllFocusCategory. Details: ', error)
+    return []
+  }
+}
+

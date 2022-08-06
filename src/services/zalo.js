@@ -8,10 +8,13 @@ export const getAccessToken = () => new Promise(resolve => {
     success: () => {
       api.getAccessToken({
         success: (token) => {
-          if (token === 'DEFAULT ACCESS TOKEN' && config.DEFAULT_ACCESS_TOKEN) {
-            // eslint-disable-next-line no-param-reassign
-            token = config.DEFAULT_ACCESS_TOKEN // For testing purpose only
-          }
+          // if (token === 'DEFAULT ACCESS TOKEN' && config.DEFAULT_ACCESS_TOKEN) {
+          //   // eslint-disable-next-line no-param-reassign
+          //   token = config.DEFAULT_ACCESS_TOKEN // For testing purpose only
+          // }
+
+          console.log("Logined: " + token);
+
           resolve(token)
         },
         fail: (error) => {
@@ -23,7 +26,7 @@ export const getAccessToken = () => new Promise(resolve => {
       console.error(error)
     }
   })
-})
+}, reject => {})
 
 
 export const follow = () => {

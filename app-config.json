@@ -16,6 +16,7 @@
     "/dynamic-route",
     "/about",
     "/404",
-    "/catalog"
+    "/home",
+    "/product-detail"
   ]
 }

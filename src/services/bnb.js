@@ -25,10 +25,10 @@ export const initToken = async () => {
     const response = await (await request('GET', 'API/initToken')).json()
     if (response.token) {
       store.dispatch('setToken', response.token)
-      return true
-    } else {
-      return false
+
     }
+    return response
+
   } catch (error) {
     console.log('Error logging in. Details: ', error)
     return false
@@ -69,24 +69,6 @@ export const createUser = async (user) => {
   }
 }
 
-
-export const login = async (accessToken) => {
-  try {
-    const response = await (await request('POST', 'API/login', {
-      accessToken
-    })).json()
-    if (response.data.jwt) {
-      store.dispatch('setJwt', response.data.jwt)
-      return true
-    } else {
-      return false
-    }
-  } catch (error) {
-    console.log('Error logging in. Details: ', error)
-    return false
-  }
-}
-
 export const getCurrentUser = async () => {
   try {
     const response = await (await request('GET', 'users/logged-in')).json()
@@ -97,47 +79,30 @@ export const getCurrentUser = async () => {
   }
 }
 
-export const getProductsByCategory = async () => {
-  try {
-    const response = await (await request('GET', 'products/by-category')).json()
-    return response.data
-  } catch (error) {
-    console.log('Error fetching products. Details: ', error)
-    return []
-  }
-}
 
-export const updateFollowStatus = async (status) => {
+
+/**
+ *
+ * @param  accessToken
+ * @returns
+ */
+export const login = async (zaloToken) => {
   try {
-    const response = await request('POST', 'users/followed', { status })
-    const data = await response.json()
-    return data
+    const response = await (await request('POST', 'API/login', {
+      zaloToken: zaloToken
+    })).json()
+    if (response.code == "ok") {
+      store.dispatch('setUser', response.user)
+
+    }
+    return response
+
   } catch (error) {
-    console.log('Error update follow OA status. Details: ', error)
+    console.log('Error logging in. Details: ', error)
     return false
   }
 }
 
-export const checkout = async (payload) => {
-  try {
-    const response = await request('POST', 'orders/checkout', payload)
-    const data = await response.json()
-    return data
-  } catch (error) {
-    console.log('Error placing an order. Details: ', error)
-    return false
-  }
-}
-
-export const getPlacedOrders = async () => {
-  try {
-    const response = await (await request('GET', 'orders/history')).json()
-    return response.data ?? []
-  } catch (error) {
-    console.log('Error fetching placed orders. Details: ', error)
-    return []
-  }
-}
 
 /**
  * Lấy danh sách banner
@@ -152,12 +117,14 @@ export const getSliders = async () => {
     }
 
     const response = await (await request('GET', 'API/sliders')).json()
-    const ret = response.sliders ?? []
 
-    // save to cache
-    saveDataArrayToCache("getSliders", ret)
+    if(response.code == "ok"){
+      // save to cache
+      saveDataArrayToCache("getSliders", response)
+    }
 
-    return ret
+
+    return response
 
   } catch (error) {
     console.log('Error fetching sliders. Details: ', error)
@@ -179,12 +146,14 @@ export const getSliders = async () => {
     }
 
     const response = await (await request('GET', 'API/load/mainAllCategory')).json()
-    const results  =  response.allCategories ?? []
 
-    // save to cache
-    saveDataArrayToCache("getAllFocusCategory", results)
+    if(response.code == "ok"){
+      // const results  =  response.allCategories ?? []
+      // save to cache
+      saveDataArrayToCache("getAllFocusCategory", response)
+    }
 
-    return results
+    return response
 
   } catch (error) {
     console.log('Error fetching getAllFocusCategory. Details: ', error)
@@ -206,15 +175,69 @@ export const getSliders = async () => {
     }
 
     const response = await (await request('GET', 'API/load/mainFocusCates')).json()
-
-    // save to cache
-    saveDataArrayToCache("getHomeCategoryProduct", response)
-
+    if(response.code == "ok"){
+      // save to cache
+      saveDataArrayToCache("getHomeCategoryProduct", response)
+    }
     return response
   } catch (error) {
     console.log('Error fetching getHomeCategoryProduct. Details: ', error)
     return []
   }
 }
+
+
+/**
+ * Lấy thông tin sản phẩm
+ * @returns thông tin sản phẩm
+ */
+ export const getProductInfo = async (pid) => {
+  try {
+
+    const key = "getProductInfo_" + pid
+    // get from cache
+    const items = await loadDataArrayFromCache(key)
+    if(items != null){
+      return items
+    }
+
+    const response = await (await request('GET', 'API/product/detail/' + pid)).json()
+    if(response.code == "ok"){
+      // save to cache
+      saveDataArrayToCache(key, response)
+    }
+    return response
+  } catch (error) {
+    console.log('Error fetching getProductInfo. Details: ', error)
+    return []
+  }
+}
+
+/**
+ * Lấy danh sách sản phẩm
+ * @returns thông tin sản phẩm
+ */
+ export const getProducts = async (url) => {
+  try {
+
+    const key = "getProducts_" + url
+    // get from cache
+    const items = await loadDataArrayFromCache(key)
+    if(items != null){
+      return items
+    }
+
+    const response = await (await request('GET', url)).json()
+    if(response.code == "ok"){
+      // save to cache
+      saveDataArrayToCache(key, response)
+    }
+    return response
+  } catch (error) {
+    console.log('Error fetching getProducts. Details: ', error)
+    return []
+  }
+}
+
 
 

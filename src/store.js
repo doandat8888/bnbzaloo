@@ -1,10 +1,10 @@
 
 import { createStore } from 'zmp-core/lite'
 import { zmp } from 'zmp-framework/react'
-import { checkout, getCurrentUser, getPlacedOrders, getProductsByCategory, login } from './services/bnb'
+import { getCurrentUser, login } from './services/bnb'
 import { follow, getAccessToken } from './services/zalo'
 import { initToken } from './services/bnb'
-import { loadTokenFromCache, loadUserFromCache, saveTokenToCache } from './services/storage'
+import { loadTokenFromCache, saveTokenToCache, loadDataArrayFromCache, saveDataArrayToCache, clearAllCache } from './services/storage'
 
 const store = createStore({
   state: {
@@ -12,6 +12,7 @@ const store = createStore({
     user: null,
     products: [],
     cart: [],
+    updateTime: null
   },
   getters: {
     user({ state }) {
@@ -22,7 +23,11 @@ const store = createStore({
     },
     cart({ state }) {
       return state.cart
-    }
+    },
+    updateTime({ state }) {
+      return state.updateTime
+    },
+
   },
   actions: {
     addToCart({ state }, item) {
@@ -40,11 +45,15 @@ const store = createStore({
     },
     setUser({ state }, user) {
       state.user = user
-      saveUserToCache(user)
+      saveDataArrayToCache("userLogin", user)
     },
     setToken({ state }, token) {
       state.token = token
       saveTokenToCache(token)
+    },
+    setUpdate({ state }, _v) {
+      state.user = _v
+      state.updateTime = _v
     },
 
     async fetchProducts({ state }) {
@@ -105,14 +114,23 @@ const store = createStore({
       }
     },
     async login({ dispatch }) {
-      const cachedUser = await loadUserFromCache()
+      const cachedUser = await loadDataArrayFromCache("userLogin")
       if (cachedUser) {
         dispatch('setUser', cachedUser)
       }
-      // const token = await getAccessToken() // Zalo
-      const bnbtoken = await loadTokenFromCache()
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
       if(!bnbtoken) {
-        bnbtoken = await initToken()
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
       }
 
       dispatch("setToken", bnbtoken)
@@ -125,8 +143,23 @@ const store = createStore({
           dispatch('setUser', user)
         }
       }
+
+
+      zmp.views.main.router.navigate('/product-detail?id=6244564396af336f34305434', {
+        animate: false
+      })
+
+      // zmp.views.main.router.navigate('/home', {
+      //   animate: false
+      // })
+
+    },
+
+    async clearAllCache(){
+      await clearAllCache()
     }
-  },
+  }
+
 })
 
 export default store

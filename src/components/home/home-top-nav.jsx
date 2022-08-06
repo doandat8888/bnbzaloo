@@ -1,10 +1,15 @@
 import React from "react";
 import { Icon, Box, Button, Row, Col, Text } from "zmp-framework/react";
 import locationIcon from "../../static/icons/location.png";
+import store from '../../store'
+
+const onClickAllClear = (e) => {
+  store.dispatch("clearAllCache");
+}
 
 const HomeTopNav = () => {
   return (
-    <Row className="pd10">
+    <Row className="pd10 bgf">
       <Col width="40">
         <Row>
           <Col>
@@ -32,7 +37,7 @@ const HomeTopNav = () => {
         <Box flex justifyContent="flex-end" flexDirection='row' flexWrap>
           <Button
             className='btn-trans'
-            onClick={() => onClickChooseButtonType(BUTTON_TYPE.SECONDARY)}
+            onClick={() => onClickAllClear()}
           >
             <Icon
                 className=''
@@ -42,32 +47,32 @@ const HomeTopNav = () => {
 
           <Button
             className='btn-trans'
-            onClick={() => onClickChooseButtonType(BUTTON_TYPE.SECONDARY)}
+            onClick={() => onClickAllClear()}
           >
             <Icon
                 className=''
-                zmp='zi-qrline'
+                zmp='zi-search'
               />
           </Button>
 
           <Button
             className='btn-trans'
-            onClick={() => onClickChooseButtonType(BUTTON_TYPE.SECONDARY)}
+            onClick={() => onClickAllClear()}
           >
             <Icon
                 className=''
-                zmp='zi-qrline'
+                zmp='zi-notif'
               />
           </Button>
 
           <Button
             className='btn-trans'
-            onClick={() => onClickChooseButtonType(BUTTON_TYPE.SECONDARY)}
+            onClick={() => onClickAllClear()}
           >
-            <Icon
-                className=''
-                zmp='zi-qrline'
-              />
+          <span className="material-icons">
+            shopping_cart
+          </span>
+
           </Button>
 
         </Box>

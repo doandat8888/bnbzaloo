@@ -6,6 +6,11 @@ export default () => {
   return defineConfig({
     root: './src',
     base: '',
+    scripts: {
+      "dev": "vite",
+      "build": "vue-tsc --noEmit && vite build",
+      "build:debug": "vue-tsc --noEmit && vite build --debug",
+    },
     plugins: [reactRefresh()],
   })
 }

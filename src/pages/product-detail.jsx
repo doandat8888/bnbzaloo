@@ -20,19 +20,22 @@ import Loading from "../components/home/loading";
 import ProductToolbar from "../components/product/toolbar";
 import ShopInfo from "../components/product/shop-info";
 import ProductList from "../components/product/list";
+import ProductActionButtons from "../components/product/action-buttons";
 
-var product = null;
+
+
 
 const ProductDetail = () => {
 
-  const _update = useStore("updateTime")
+//   const _update = useStore("updateTime")
+  var product = useStore("product");
 
   const getProduct = (pid) =>
     getProductInfo(pid).then(
       (res) => {
         if (res.code == "ok") {
           product = res.product;
-          store.dispatch("setUpdate", Math.random());
+          store.dispatch("setProduct", product);
         } else {
           alert(res.msg);
         }
@@ -50,19 +53,23 @@ const ProductDetail = () => {
   return (
     <Page name="home">
       <HomeTopNav />
-      {product == null ? (
+      {product == null || product._id == null ? (
         <Loading></Loading>
       ) : (
+        <>
         <div className="product-detail">
             <ProductImages product={product} />
             <ProductNamePrice product={product} />
             <ProductToolbar product={product} />
+            <ProductActionButtons product={product} />
             <ProductDesc product={product} />
             <ShopInfo product={product} />
-            <ProductList horizontal={true} title="Có thể bạn quan tâm" desc="" field="relations" url={'/API/product/relations/' + product._id} />
 
         </div>
+        <ProductList horizontal={true} title="Có thể bạn quan tâm" desc="" field="relations" url={'/API/product/relations/' + product._id} />
+        <ProductList horizontal={true} title="Sản phẩm bạn xem gần đây" desc="" field="recents" url={'/API/load/recents'} />
 
+        </>
       )}
     </Page>
   );

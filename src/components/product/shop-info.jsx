@@ -9,10 +9,10 @@ const ShopInfo = (props) => {
     const {shop} = product
 
   return (
-    <Card className="cover shop-infp">
+    <Card className="cover shop-info">
         <div className="cover-c">
         <Title className="mbt15">Cửa hàng thực hiện</Title>
-        <Row>
+        <Row className="mt20">
             <Col width={20}>
                 <Avatar src={shop.avatar} size={56}></Avatar>
             </Col>

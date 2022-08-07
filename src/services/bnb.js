@@ -1,6 +1,7 @@
 import config from '../config'
 import store from '../store'
 import {loadDataArrayFromCache , saveDataArrayToCache } from './storage'
+import { zmp } from "zmp-framework/react";
 
 
 
@@ -237,6 +238,19 @@ export const getSliders = async () => {
     console.log('Error fetching getProducts. Details: ', error)
     return []
   }
+}
+
+/**
+ * Hiển thị message thông báo
+ * @returns thông tin sản phẩm
+ */
+ export const showMessageToast = async (msg) => {
+  zmp.toast.show({
+    text: msg,
+    position: 'bottom',
+    closeTimeout: 2000
+  });
+
 }
 
 

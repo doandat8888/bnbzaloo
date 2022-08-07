@@ -7,6 +7,7 @@ import { Chip } from "./chip";
 const ProductItem = (props) => {
   const { product } = props;
   const { code, name, prices, image } = product;
+
   return (
     <div key={product._id} className="text-center product">
       <div className="p-over">
@@ -33,7 +34,7 @@ const ProductItem = (props) => {
         <Text bold className="max-line-2">
           {name}
         </Text>
-        <Price slot="content" prices={prices} unit="đ" className="price" />
+        <Price slot="content" price={{price: prices.regular, price_discount: prices.regular_discount}} unit="đ" className="price" />
       </div>
 
     </div>

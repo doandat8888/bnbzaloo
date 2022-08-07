@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, Box, Button, Row, Col, Text } from "zmp-framework/react";
+import { Icon, Box, useStore, Button, Row, Col, Text } from "zmp-framework/react";
 import locationIcon from "../../static/icons/location.png";
 import store from '../../store'
 
@@ -8,6 +8,9 @@ const onClickAllClear = (e) => {
 }
 
 const HomeTopNav = () => {
+
+  const cart = useStore("cart");
+
   return (
     <Row className="pd10 bgf">
       <Col width="40">
@@ -69,8 +72,15 @@ const HomeTopNav = () => {
             className='btn-trans'
             onClick={() => onClickAllClear()}
           >
+            {cart.length > 0 ?
+            <i className="badge-counter">{cart.length}</i>
+            :
+            <></>
+            }
+
           <span className="material-icons">
             shopping_cart
+
           </span>
 
           </Button>

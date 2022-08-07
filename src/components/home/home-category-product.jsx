@@ -18,15 +18,11 @@ import {
 
 import { getHomeCategoryProduct } from '../../services/bnb'
 import ProductItem from "../product/product-item";
+import ProductList from "../product/list";
 
 var ret = null;
 var loading = true;
 
-const viewProductPage = (p) => {
-  zmp.views.main.router.navigate('/product-detail?id=' + p._id, {
-    animate: false
-  });
-}
 
 const HomeCategoryProduct = () => {
 
@@ -63,17 +59,7 @@ const HomeCategoryProduct = () => {
           </div>
 
 
-
-        <Grid columns={2} noBorder="true" className="cate-item products">
-              {cate.products.map((p, index1) => (
-            <GridItem
-            onClick={() => viewProductPage(p)}
-            key={p._id}
-            >
-              <ProductItem product={p} />
-            </GridItem>
-              ))}
-          </Grid>
+        <ProductList products={cate.products} />
 
       </Card>
 ))}

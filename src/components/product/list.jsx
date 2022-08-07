@@ -20,25 +20,44 @@ import {
 import { getProducts } from '../../services/bnb'
 import ProductItem from "../product/product-item";
 
-var products = null;
-var inited = false;
 
+const viewProductPage = (p) => {
+    store.dispatch("setProduct", {});
+    zmp.views.main.router.navigate('/product-detail?id=' + p._id, {
+      animate: false
+    });
+  }
 
 const ProductList = (props) => {
-    const {title, url, field, horizontal} = props
+
+    const {title, url, field, horizontal, products} = props
+    var product = useStore("product");
+    var list =  null ;
+
+    if(products){
+        list= products
+    } else if(product && product[field]){
+        list = product[field]
+    }
+
+
+
     const _update = useStore("updateTime");
     useEffect(() => {
-        if(inited){
+        if(!url){
             return;
         }
 
         getProducts(url).then((res) => {
 
-            inited = true;
+            // inited = true;
 
             if(res.code == "ok"){
-              products = res[field];
-              store.dispatch("setUpdate", {});
+              product[field] = res[field];
+              list =  product[field];
+
+              store.dispatch("setProduct", product);
+              store.dispatch("setUpdate", Math.random());
             } else {
               alert(res.msg);
             }
@@ -47,7 +66,7 @@ const ProductList = (props) => {
 
     }, []);
 
-  if(products == null){
+  if(list == null){
     return <></>
   }
 
@@ -60,14 +79,14 @@ const ProductList = (props) => {
 
     {horizontal ?
     <List className="products horizontal">
-        <div className="list-hz-ctn" style={{width: (150*products.length) + "px"}} >
+        <div className="list-hz-ctn" style={{width: ((150+10)*list.length) + "px"}} >
 
 
-    {products.map((p, index) => (
-      <Card className="list-hz-item" key={p._id}>
+    {list.map((p, index) => (
+      <div className="list-hz-item" key={p._id} onClick={() => viewProductPage(p)}>
 
            <ProductItem product={p} />
-           </Card>
+           </div>
 
 
 ))}
@@ -75,16 +94,17 @@ const ProductList = (props) => {
   </List>
 
     :
-    <List className="products">
-      {products.map((p, index) => (
-        <Card key={p._id}>
+    <Grid columns={2} noBorder="true" className="cate-item products">
+              {list.map((p, index1) => (
+            <GridItem
+            onClick={() => viewProductPage(p)}
+            key={p._id}
+            >
+              <ProductItem product={p} />
+            </GridItem>
+              ))}
+          </Grid>
 
-             <ProductItem product={p} />
-             </Card>
-
-
-))}
-    </List>
     }
 
     </Card>

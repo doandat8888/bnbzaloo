@@ -19,7 +19,7 @@ return (
           ))}
         </Swiper>
     </Card>
-    <div className="chips mg10 text-center">
+    <div className="chips p mg10 text-center">
         <Chip text={code} csscolor="small" />
     </div>
     {

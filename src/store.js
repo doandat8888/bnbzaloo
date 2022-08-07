@@ -10,6 +10,7 @@ const store = createStore({
   state: {
     token: null,
     user: null,
+    product: null,
     products: [],
     cart: [],
     updateTime: null
@@ -20,6 +21,9 @@ const store = createStore({
     },
     products({ state }) {
       return state.products
+    },
+    product({ state }) {
+      return state.product
     },
     cart({ state }) {
       return state.cart
@@ -50,6 +54,9 @@ const store = createStore({
     setToken({ state }, token) {
       state.token = token
       saveTokenToCache(token)
+    },
+    setProduct({ state }, product) {
+      state.product = product
     },
     setUpdate({ state }, _v) {
       state.user = _v

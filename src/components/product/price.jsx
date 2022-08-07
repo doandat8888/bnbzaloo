@@ -2,23 +2,24 @@ import React from "react";
 import { Text } from "zmp-framework/react";
 
 export const Price = (props) => {
-  const { prices, unit } = props;
+  const { price, inline } = props;
+  const unit = 'đ';
 
   return (
-    <div className="price">
-      {prices.regular_discount > 0 ? (
+    <div className={inline ? 'inblock price': 'price'}>
+      {price.price_discount > 0 ? (
         <>
-          <Text bold className="main-price">
-            {prices.regular_discount.toLocaleString()} {unit ? unit : " VNĐ"}
+          <Text  bold className="main-price">
+            {price.price_discount.toLocaleString()} {unit ? unit : " VNĐ"}
           </Text>
-          <Text className="orgin-price">
-            {prices.regular.toLocaleString()} {unit ? unit : " VNĐ"}
+          <Text  className="orgin-price">
+            {price.price.toLocaleString()} {unit ? unit : " VNĐ"}
           </Text>
         </>
       ) : (
         <>
           <Text bold className="main-price">
-            {prices.regular.toLocaleString()} {unit ? unit : " VNĐ"}
+            {price.price.toLocaleString()} {unit ? unit : " VNĐ"}
           </Text>
         </>
       )}

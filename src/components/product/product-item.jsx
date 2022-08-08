@@ -26,8 +26,8 @@ const ProductItem = (props) => {
       </div>
 
       <div className="chips mbt5">
-        <Chip text={code} csscolor=" small" />
-        <Chip text="FREESHIP" csscolor="active small" />
+        <Chip text={code} csscolor="p small" />
+        <Chip text="FREESHIP" csscolor="active p small" />
       </div>
 
       <div className="p-info">

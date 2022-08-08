@@ -5,6 +5,7 @@ import { showMessageToast } from "../../services/bnb";
 import Chip from './chip';
 import PriceOptions from './price-options';
 import DeliveryDateTime from './delivery-date-time';
+import DeliveryLocation from './delivery-location';
 
 export const ProductActionButtons = (props) => {
   const [showAddToCart, setShowAddToCart] = useState(false)
@@ -39,7 +40,7 @@ export const ProductActionButtons = (props) => {
   </Row>
 
      <Sheet
-      swipeToClose
+
       backdrop
       opened={showAddToCart}
       onSheetClosed={() => setShowAddToCart(false)}
@@ -48,7 +49,8 @@ export const ProductActionButtons = (props) => {
       style={{height: '650px'}}
       className="add-to-cart-sheet"
     >
-      <Card className='cover  small-padding no-margin zmp-card'>
+
+      <Card className='cover  small-padding no-margin zmp-card '>
       <div className='cover-c'>
       <Row >
             <Col className='text-right'>
@@ -57,13 +59,13 @@ export const ProductActionButtons = (props) => {
             <Col>
             <Row className='text-center list-inline'>
             <Button>
-              <span style={{fontSize: "36px", width: "36px", height: "36px"}} class="material-icons">
+              <span style={{fontSize: "36px", width: "36px", height: "36px"}} className="material-icons">
               add_circle
               </span>
               </Button>
 <Text className='button' size='xlarge'>1</Text>
               <Button>
-              <span style={{fontSize: "36px", width: "36px", height: "36px"}} class="material-icons">
+              <span style={{fontSize: "36px", width: "36px", height: "36px"}} className="material-icons">
 remove_circle
 </span>
               </Button>
@@ -87,6 +89,7 @@ remove_circle
 
          <PriceOptions product={product} />
          <DeliveryDateTime product={product} />
+         <DeliveryLocation product={product} />
 
       <Box p={4}>
         <Box mx={0}>
@@ -95,6 +98,7 @@ remove_circle
           </Button>
         </Box>
       </Box>
+
     </Sheet>
     </>
 

@@ -152,7 +152,7 @@ const store = createStore({
       }
 
 
-      zmp.views.main.router.navigate('/product-detail?id=6244564396af336f34305434', {
+      zmp.views.main.router.navigate('/product-detail?id=6194a45a60da790e0009eb73', {
         animate: false
       })
 

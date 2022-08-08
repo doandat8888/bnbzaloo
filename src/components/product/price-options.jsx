@@ -8,6 +8,7 @@ import Loading from '../home/loading';
 import sizeIcon1 from "../../static/icons/size-1.png";
 import sizeIcon2 from "../../static/icons/size-2.png";
 import sizeIcon3 from "../../static/icons/size-3.png";
+import { zmp } from 'zmp-framework/react'
 
 export const PriceOptions = (props) => {
   const [showAddToCart, setShowAddToCart] = useState(false)
@@ -19,6 +20,11 @@ export const PriceOptions = (props) => {
   const {priceOptions} = _product;
   const _update = useStore("updateTime");
 
+  const selectPrice = (price, row) => {
+
+    var priceRadio = row.currentTarget.querySelector('#' + price.id + " input");
+    priceRadio.checked = true;
+  };
 
   useEffect(() => {
     prices.regular = prices.deluxe = prices.premium = 1000000;
@@ -76,10 +82,9 @@ export const PriceOptions = (props) => {
               <List className='product'>
                 {priceOptions.map((price, index) => (
 
-                <Row className='row-center-center mbt5' key={index}>
+                <Row className='row-center-center mbt5' key={index} onClick={(_v) => selectPrice(price, _v)}>
                     <Col width={15} className="cc-col">
-                        <Radio name='size' value={price.id}  />
-
+                        <Radio id={price.id} name='size' value={price.id}  />
                     </Col>
                     <Col width={15} className="cc-col"><img src={price.image} className="mr10" /></Col>
                     <Col width={70}>

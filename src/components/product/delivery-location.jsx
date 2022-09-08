@@ -16,7 +16,7 @@ import {
   ListItem,
 } from "zmp-framework/react";
 import store from "../../store";
-import { showMessageToast } from "../../services/bnb";
+import { getDistricts, getProvinces } from "../../services/bnb";
 import Chip from "./chip";
 import Price from "./price";
 import Loading from "../home/loading";
@@ -24,26 +24,46 @@ import sizeIcon1 from "../../static/icons/size-1.png";
 import sizeIcon2 from "../../static/icons/size-2.png";
 import sizeIcon3 from "../../static/icons/size-3.png";
 
+
+
 export const DeliveryLocation = (props) => {
   const { product } = props;
-
+  const [loading, setLoading] = useState(true);
+  // const loading =  useStore("loading");
   const _update = useStore("updateTime");
+  const location = useStore("location");
+  const cartItem = useStore("cartItem");
 
-  const datePickerData = [
-    // districts
-    {
-      values: "1 2 3".split(" "),
-      displayValues: ['Quan 1', 'Quan 2', 'Quan 3']
-    }
-  ];
 
-  const handleChanged = (picker, values) => {
+  const datePickerData = [];
 
+  const handleOnChanged = (picker, values) => {
+    cartItem.district_id = picker.value[0];
+    store.dispatch("setCartItem", cartItem);
+    store.dispatch("setUpdate", Math.random());
   };
 
   useEffect(() => {
-    store.dispatch("setProduct", product);
-  });
+    if(true){
+      // store.dispatch("setProduct", product);
+      datePickerData.push(
+        {
+          values: [],
+          displayValues: []
+        }
+      );
+
+      getDistricts(location.province).then((ret) => {
+        ret.districts.forEach((d, index) => {
+          datePickerData[0]['values'].push(d._id);
+          datePickerData[0]['displayValues'].push(d.name);
+        });
+        store.dispatch("setUpdate", Math.random());
+        setLoading(false);
+      });
+    }
+
+  }, [loading]);
 
   return (
     <>
@@ -61,11 +81,13 @@ export const DeliveryLocation = (props) => {
 
                   <Box inline>
                     <Picker
-                        placeholder="--Chọn--"
+
+                      placeholder="--Chọn--"
                       title="Chọn quận / huyện"
+                      values = {[cartItem.district_id]}
                       data={datePickerData}
                       inputId="select-district"
-                      onChange={handleChanged}
+                      onChange={handleOnChanged}
                       formatValue={(values, displayValues) => {
                         return `${displayValues[0]}`;
                       }}

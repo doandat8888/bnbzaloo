@@ -37,7 +37,8 @@
 }
 
 /* Your app custom styles here */
-
+@gray4: #E0E0E0;
+@gray5: #F2F2F2;
 
 /*--- use ---*/
 .maincolor{
@@ -471,6 +472,10 @@ a{
   }
 }
 
+.img-thumbnail{
+  .rd(8px);
+  .border(@gray4);
+}
 .product-detail{
   .price{
     .main-price{
@@ -495,7 +500,7 @@ a{
   }
   &.p{
     p{
-      .fs(11px);
+      .fs(10px);
     }
   }
 
@@ -510,4 +515,90 @@ a{
   justify-content: center;
   align-items: center;
   display: flex;
+}
+
+.add-to-cart-sheet{
+  z-index: 10000;
+}
+
+.btn-group{
+  .button{
+    .inblock;
+    .pd(0 5px);
+    .icon{
+      .mr(0);
+    }
+    &.num{
+      .color(@3);
+    }
+  }
+}
+.cart-page{
+  .mg(0);
+  .shop-title{
+    .bg(@gray4);
+    .pd(10px);
+    span{
+      .inblock;
+      .fl;
+      .mr5;
+    }
+    .sn {
+      .inblock;
+      .fs(17px);
+      .fw(600);
+    }
+  }
+  .list{
+    .mg(0);
+
+    .cart-item{
+      .p-info{
+        .pdl(15px);
+        .rm-item{
+          .fr;
+          .mt(-10px);
+          .mr(-20px);
+        }
+        .p-name{
+          .fb;
+          .fs(17px);
+
+        }
+        .p-code{
+          .color(@9);
+          .fs(12px);
+          .fb;
+          .mbt(0px);
+        }
+
+        .size{
+          .bg(@gray5);
+          .rd(4px);
+          .pd(5px 10px);
+           .mg(10px 0 20px 0);
+          .typo-body {
+            .mbt(0);
+          }
+        }
+
+        .mprice{
+          .fb;
+          .fs(19px);
+          .color(@color1);
+        }
+        .dprice{
+          .oprice{
+            .color(@9);
+            .inblock;
+          }
+          .percent{
+            .color(@color02);
+            .ml10;
+            .inblock;
+          }
+        }
+      }
+    }
+  }
 }

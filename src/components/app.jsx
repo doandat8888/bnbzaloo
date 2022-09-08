@@ -13,9 +13,11 @@ const MyApp = () => {
   useEffect(() => {
     zmpready(() => {
       // Call ZMP APIs here
-      store.dispatch('login')
+      store.dispatch('login');
+
+
     });
-  }, [])
+  }, []);  
 
   return (
     <App {...zmpparams} >

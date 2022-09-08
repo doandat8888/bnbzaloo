@@ -11,6 +11,7 @@ import {
   Col,
   Box,
   Button,
+  DatePicker,
   Link,
   List,
   ListItem,
@@ -27,7 +28,21 @@ import sizeIcon3 from "../../static/icons/size-3.png";
 export const DeliveryDateTime = (props) => {
   const { product } = props;
 
+  var cartItem = useStore("cartItem");
   const _update = useStore("updateTime");
+
+  // init values
+  var selectedDate = cartItem.date;
+  var dateArr = cartItem.dateArr;
+
+  if(!selectedDate){
+    var date = new Date();
+    const d = date.getDay();
+    const mon = date.getMonth();
+
+    dateArr = [0, mon + 1, d + 1];
+  }
+
 
   const datePickerData = [
     {
@@ -59,20 +74,44 @@ export const DeliveryDateTime = (props) => {
     },
   ];
 
-  const handleChangeDate = (picker, values) => {
-    const daysInMonth = new Date(
-      picker.value[0],
-      picker.value[1] * 1 + 1,
-      0
-    ).getDate();
-    if (values[2] > daysInMonth) {
-      picker.cols[2].setValue(daysInMonth);
-    }
+  const setDeliveryTime = (value) => {
+    cartItem.time_range = value;
+    store.dispatch("setCartItem", cartItem);
+    store.dispatch("setUpdate", Math.random());
+  }
+
+  const handleChangeDate = (date) => {
+    // const values = picker.value;
+    // const daysInMonth = new Date(
+    //   picker.value[0],
+    //   picker.value[1] * 1 + 1,
+    //   0
+    // ).getDate();
+
+    // if (values[2] > daysInMonth) {
+    //   picker.cols[2].setValue(daysInMonth);
+    // }
+
+    // const d = values[2].padStart(2,'0');
+    // const m =(values[1]*1 + 1).toString();
+    // const mm = m.padStart(2,'0');
+
+
+
+
+    cartItem.date = date.toString();
+
+    cartItem.dateObj = date;
+
+    store.dispatch("setCartItem", cartItem);
+    store.dispatch("setUpdate", Math.random());
+
+    picker.opened = false;
   };
 
-  useEffect(() => {
-    store.dispatch("setProduct", product);
-  });
+  // useEffect(() => {
+  //   store.dispatch("setProduct", product);
+  // }, [selectedDate]);
 
   return (
     <>
@@ -88,22 +127,11 @@ export const DeliveryDateTime = (props) => {
               </Col>
               <Col width={60}>
 
-                  <Box inline>
-                    <Picker
-                      placeholder="dd/mm/yyyy"
-                      title="Chọn ngày giao"
-                      data={datePickerData}
-                      inputId="select-date-picker"
-                      onChange={handleChangeDate}
-                      formatValue={(values, displayValues) => {
-                        const d = values[2].padStart(2,'0');
-                        const m =(values[1]*1 + 1).toString();
-                        const mm = m.padStart(2,'0');
+                <Box className="pdt15 pdbt20">
+                    <DatePicker locale="vi" listInput clearButton  onClick={handleChangeDate} />
+                </Box>
 
-                        return `${d}/${mm}/${values[0]}`;
-                      }}
-                    />
-                  </Box>
+
               </Col>
             </Row>
 
@@ -114,9 +142,9 @@ export const DeliveryDateTime = (props) => {
               <Col width={60}>
 
                   <Box inline className="chips">
-                      <Chip text="8-12" csscolor="active" />
-                      <Chip text="12-16" csscolor="" />
-                      <Chip text="16-20" csscolor="" />
+                  <Link onClick={() => setDeliveryTime('8-12')} href="#"><Chip  text="8-12" csscolor={ cartItem.time_range == '8-12' ? "active" : '' } /></Link>
+                  <Link onClick={() => setDeliveryTime('12-16') }><Chip  text="12-16" csscolor={ cartItem.time_range == '12-16' ? "active" : '' } /></Link>
+                    <Link onClick={() => setDeliveryTime('16-20') } ><Chip text="16-20" csscolor={ cartItem.time_range == '16-20' ? "active" : '' } /></Link>
                   </Box>
 
                   <Row>

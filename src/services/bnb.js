@@ -1,8 +1,7 @@
 import config from '../config'
 import store from '../store'
 import {loadDataArrayFromCache , saveDataArrayToCache } from './storage'
-import { zmp } from "zmp-framework/react";
-
+import { useStore, zmp } from "zmp-framework/react";
 
 
 const base = config.BASE_URL
@@ -234,6 +233,86 @@ export const getSliders = async () => {
       saveDataArrayToCache(key, response)
     }
     return response
+  } catch (error) {
+    console.log('Error fetching getProducts. Details: ', error)
+    return []
+  }
+}
+
+/**
+ * Tải danh sách tỉnh thành
+ * @returns
+ */
+export const getProvinces = async () => {
+
+  try {
+
+    const url = 'API/provincefilters?limit=99&offset=0'
+
+    const key = "getProvinces"
+    // get from cache
+    const items = await loadDataArrayFromCache(key)
+    var result;
+    if(items != null){
+      result = items
+    } else {
+      const response = await (await request('GET', url)).json()
+      if(response.code == "ok"){
+        // save to cache
+        saveDataArrayToCache(key, response)
+        result = response
+      }
+    }
+
+    if (result.provinces != null && result.provinces.length > 0) {
+      var location = store.getters.location.value;
+      location.province = result.provinces[0]
+      store.dispatch("setLocation", location)
+      getDistricts(currentProduct)
+    }
+
+    return result
+
+  } catch (error) {
+    console.log('Error fetching getProducts. Details: ', error)
+    return []
+  }
+}
+
+/**
+ * Tải danh sách quận huyện
+ * @returns
+ */
+ export const getDistricts = async (p) => {
+
+  try {
+
+    const url = 'API/districtfilters?limit=999&offset=0&province_id=' + p._id
+
+    const key = "getDistricts_" + p._id
+    // get from cache
+    const items = await loadDataArrayFromCache(key)
+    var result;
+    if(items != null){
+      result = items
+    } else {
+      const response = await (await request('GET', url)).json()
+      if(response.code == "ok"){
+        // save to cache
+        saveDataArrayToCache(key, response)
+        result = response
+      }
+    }
+
+    if (result.districts != null && result.districts.length > 0) {
+
+      var location = store.getters.location.value;
+      location.district = result.districts[0]
+      store.dispatch("setLocation", location)
+    }
+
+    return result
+
   } catch (error) {
     console.log('Error fetching getProducts. Details: ', error)
     return []

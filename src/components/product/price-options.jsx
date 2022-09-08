@@ -18,9 +18,15 @@ export const PriceOptions = (props) => {
 
   const _product = useStore("product");
   const {priceOptions} = _product;
+
+  var cartItem = useStore("cartItem");
   const _update = useStore("updateTime");
 
   const selectPrice = (price, row) => {
+
+    cartItem.size = price.id;
+    store.dispatch("setCartItem", cartItem);
+    store.dispatch("setUpdate", Math.random());
 
     var priceRadio = row.currentTarget.querySelector('#' + price.id + " input");
     priceRadio.checked = true;
@@ -84,7 +90,7 @@ export const PriceOptions = (props) => {
 
                 <Row className='row-center-center mbt5' key={index} onClick={(_v) => selectPrice(price, _v)}>
                     <Col width={15} className="cc-col">
-                        <Radio id={price.id} name='size' value={price.id}  />
+                        <Radio id={price.id} name='size' checked={cartItem.size == price.id} value={price.id}  />
                     </Col>
                     <Col width={15} className="cc-col"><img src={price.image} className="mr10" /></Col>
                     <Col width={70}>

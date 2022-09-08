@@ -2,12 +2,21 @@ import React from "react";
 import { Icon, Box, useStore, Button, Row, Col, Text } from "zmp-framework/react";
 import locationIcon from "../../static/icons/location.png";
 import store from '../../store'
+import { zmp } from 'zmp-framework/react'
 
-const onClickAllClear = (e) => {
-  store.dispatch("clearAllCache");
-}
+
 
 const HomeTopNav = () => {
+
+  const onClickAllClear = (e) => {
+    store.dispatch("clearAllCache");
+  }
+
+  const onCartClick = (e) => {
+    zmp.views.main.router.navigate('/checkout', {
+      animate: true
+    })
+  }
 
   const cart = useStore("cart");
 
@@ -70,7 +79,7 @@ const HomeTopNav = () => {
 
           <Button
             className='btn-trans'
-            onClick={() => onClickAllClear()}
+            onClick={() => onCartClick()}
           >
             {cart.length > 0 ?
             <i className="badge-counter">{cart.length}</i>

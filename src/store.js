@@ -13,7 +13,19 @@ const store = createStore({
     product: null,
     products: [],
     cart: [],
-    updateTime: null
+    cartItem: {},
+    loading: {},
+    updateTime: null,
+    location: {
+      province: {
+        _id: '5016fd6b7f8b9ac842000000',
+        name: 'TP HCM'
+      },
+      district: null,
+      countryId: null,
+      provices: null,
+      districts: null
+    }
   },
   getters: {
     user({ state }) {
@@ -31,11 +43,29 @@ const store = createStore({
     updateTime({ state }) {
       return state.updateTime
     },
-
+    cartItem( {state}) {
+      return state.cartItem;
+    },
+    location( {state}) {
+      return state.location;
+    },
+    loading( {state}) {
+      return state.loading;
+    }
   },
   actions: {
     addToCart({ state }, item) {
       state.cart = state.cart.concat(item)
+    },
+
+    setCartItem({ state }, item) {
+      state.cartItem = item;
+    },
+    setLocation({ state }, location) {
+      state.location = location;
+    },
+    setLoading({ state }, loading) {
+      state.loading = loading;
     },
     updateCartItem({ state }, { index, item }) {
       state.cart[index] = item
@@ -152,9 +182,13 @@ const store = createStore({
       }
 
 
-      zmp.views.main.router.navigate('/product-detail?id=6194a45a60da790e0009eb73', {
+      zmp.views.main.router.navigate('/checkout', {
         animate: false
       })
+
+      // zmp.views.main.router.navigate('/product-detail?id=6194a45a60da790e0009eb73', {
+      //   animate: false
+      // })
 
       // zmp.views.main.router.navigate('/home', {
       //   animate: false

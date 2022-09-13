@@ -2,7 +2,7 @@ import React, {useState, useMemo, useEffect} from 'react';
 import {  Row, Sheet, Title, Card, Text, Col,  Box, Button, List, useStore, ListItem } from "zmp-framework/react";
 import store from '../../store'
 import { showMessageToast } from "../../services/bnb";
-import Chip from './chip';
+import Chip from '../common/chip';
 import PriceOptions from './price-options';
 import DeliveryDateTime from './delivery-date-time';
 import DeliveryLocation from './delivery-location';

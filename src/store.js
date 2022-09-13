@@ -182,7 +182,7 @@ const store = createStore({
       }
 
 
-      zmp.views.main.router.navigate('/checkout', {
+      zmp.views.main.router.navigate('/prepayment', {
         animate: false
       })
 

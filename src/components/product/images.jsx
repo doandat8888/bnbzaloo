@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Swiper, SwiperSlide,  Link, Text } from "zmp-framework/react";
-import { Chip } from "../product/chip";
+import { Chip } from "../common/chip";
 
 const ProductImages = (props) => {
   const { product } = props;

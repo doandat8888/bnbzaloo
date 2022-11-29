@@ -17,7 +17,7 @@ import {
 } from "zmp-framework/react";
 
 import { getHomeCategoryProduct } from '../../services/bnb'
-import ProductItem from "../product/product-item";
+// import ProductItem from "../product/product-item";
 import ProductList from "../product/list";
 
 var ret = null;

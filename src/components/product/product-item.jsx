@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Link, Text } from "zmp-framework/react";
 import { Price } from "./price";
-import { Chip } from "./chip";
+import { Chip } from "../common/chip";
 
 
 const ProductItem = (props) => {

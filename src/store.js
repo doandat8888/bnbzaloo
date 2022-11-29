@@ -182,17 +182,17 @@ const store = createStore({
       }
 
 
-      zmp.views.main.router.navigate('/prepayment', {
-        animate: false
-      })
+      // zmp.views.main.router.navigate('/prepayment', {
+      //   animate: false
+      // })
 
       // zmp.views.main.router.navigate('/product-detail?id=6194a45a60da790e0009eb73', {
       //   animate: false
       // })
 
-      // zmp.views.main.router.navigate('/home', {
-      //   animate: false
-      // })
+      zmp.views.main.router.navigate('/home', {
+        animate: false
+      })
 
     },
 

@@ -2,7 +2,7 @@ import React, {useState, useMemo, useEffect} from 'react';
 import {  Row, useStore, Radio, Title, Card, Text, Col,  Box, Button, List, ListItem } from "zmp-framework/react";
 import store from '../../store'
 import { showMessageToast } from "../../services/bnb";
-import Chip from './chip';
+import Chip from '../common/chip';
 import Price from './price';
 import Loading from '../home/loading';
 import sizeIcon1 from "../../static/icons/size-1.png";

@@ -251,6 +251,17 @@ const FullOrderInput = (props) =>  {
         </table>
       </section>
 
+      <div className="cart-page">
+      <Card className="step-action cart-action">
+        <div className="cart-sum">
+          <Text>Tổng tiền tạm tính:</Text>
+          <Text className="total">50.000đ</Text>
+        </div>
+
+        <Button large responsive className="btn btn-primary">Thanh toán</Button>
+      </Card>
+      </div>
+
     </div>
   );
 };

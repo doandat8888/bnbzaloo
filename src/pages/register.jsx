@@ -26,7 +26,7 @@ import FormConformPassword from '../components/register/Conform-password';
 import FormInputCode from '../components/register/intro-code';
 
 
-
+//aaaaa
 import '../css/register.less';
 
 

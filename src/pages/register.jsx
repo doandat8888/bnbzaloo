@@ -38,7 +38,7 @@ const onClickLoginPage = (e) => {
 }
 
 const RegistetPage = () => {
-
+//aaaaaa
   return (
     <Page name="register" className="register" >
       <Card className='text-form' >
@@ -55,6 +55,7 @@ const RegistetPage = () => {
           </Row>
           <p className="text-color-3 text-center">Để khám phá tính năng của B&B nhé</p>
         <Row className="text-name">
+          
           <Icon
             zmp='zi-user'
             className="user-icon"

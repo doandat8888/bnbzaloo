@@ -5,6 +5,7 @@ import { getCurrentUser, login } from './services/bnb'
 import { follow, getAccessToken } from './services/zalo'
 import { initToken } from './services/bnb'
 import { loadTokenFromCache, saveTokenToCache, loadDataArrayFromCache, saveDataArrayToCache, clearAllCache } from './services/storage'
+import OTPPage from './pages/otp'
 
 const store = createStore({
   state: {
@@ -149,6 +150,142 @@ const store = createStore({
           position: 'center'
         }).open()
       }
+    },
+    // move to register page
+    async signup({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+
+      // const success = await login(bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+
+
+      zmp.views.main.router.navigate('/register', {
+        animate: false
+      })
+
+      // zmp.views.main.router.navigate('/product-detail?id=6194a45a60da790e0009eb73', {
+      //   animate: false
+      // })
+
+      // zmp.views.main.router.navigate('/home', {
+      //   animate: false
+      // })
+
+    },
+    async loginpage({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+
+      // const success = await login(bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+
+
+      zmp.views.main.router.navigate('/login', {
+        animate: false
+      })
+
+      // zmp.views.main.router.navigate('/product-detail?id=6194a45a60da790e0009eb73', {
+      //   animate: false
+      // })
+
+      // zmp.views.main.router.navigate('/home', {
+      //   animate: false
+      // })
+
+    },
+    async otp({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+
+      // const success = await login(bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+
+
+      zmp.views.main.router.navigate('/otp', {
+        animate: false
+      })
+
+      // zmp.views.main.router.navigate('/product-detail?id=6194a45a60da790e0009eb73', {
+      //   animate: false
+      // })
+
+      // zmp.views.main.router.navigate('/home', {
+      //   animate: false
+      // })
+
     },
     async login({ dispatch }) {
       const cachedUser = await loadDataArrayFromCache("userLogin")

@@ -19,6 +19,11 @@
     "/home",
     "/checkout",
     "/prepayment",
-    "/product-detail"
+    "/product-detail",
+    "/settings",
+    "/catalog",
+    "/register",
+    "/login",
+    "/otp"
   ]
 }

@@ -1,0 +1,19 @@
+{
+  "cwd": "D:\\working\\bnb-zalo-app",
+  "newProject": true,
+  "name": "BNB_Zalo",
+  "framework": "react",
+  "template": "tabs",
+  "cssPreProcessor": "less",
+  "theming": {
+    "customColor": true,
+    "color": "#da2128",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false,
+    "useUiKits": true
+  },
+  "customBuild": false,
+  "includeTailwind": false,
+  "stateManagement": "store"
+}

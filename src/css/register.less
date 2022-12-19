@@ -1,0 +1,89 @@
+@import "./common.less";
+@backgroundcolor: #FFFFFF;
+@background-input: #F2F2F2;
+.register{
+  background:@backgroundcolor;
+}
+.text-form{
+  margin: 10px;
+
+}
+.text-input{
+  background:@background-input !important;
+  border-radius: 20px !important;
+  width: 100%;
+  margin: 10px !important;
+  
+}
+.header{
+  .maincolor{
+    margin: 0 auto;
+    .color(@color1);
+    margin: 3px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 17px;
+  }
+
+  .text-color-3{
+    .color(#999);
+    margin: 0;
+  }
+  .back-icon{
+    display: inline-block;
+  }
+}
+
+.text-name{
+  input{
+   // position: relative;
+    padding-left: 40px;
+  }
+  
+  .user-icon{
+    position: absolute;
+    top: 123px;
+    left: 30px;
+  }
+}
+
+
+
+.phoneNum-text{
+  margin-right: 20px;
+}
+.intro-code{
+  p{
+    margin:0px;
+    margin-left: 10px;
+  }
+  .scan-code{
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+}
+.text-list-input
+{
+  background: #F2F2F2;
+  border-radius: 20px !important;
+  margin: 10px !important;
+}
+.btn-submit{
+ border-radius: 10px; 
+ color: white;
+background: #DA2128;
+width: 100%;
+}
+
+.login-link{
+  margin: px;
+  p{
+    .mg(15px);
+
+  }
+  a{
+    color: red;
+    .mg(5px 20px 0px 0px);
+  }
+}

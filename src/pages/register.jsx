@@ -28,7 +28,7 @@ import FormInputCode from '../components/register/intro-code';
 
 
 import '../css/register.less';
-
+//change here
 
 const onClickSignup = (e) => {
   store.dispatch("signup");

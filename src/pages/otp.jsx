@@ -27,16 +27,28 @@ const onClickOTP = (e) => {
 
 const OTPPage = () => {
   return (
-    <Page name="otp" className="otp">
-       <Card className = "otp-card" >
-       <Box className ="logo"> 
-       <Avatar size={120} src={logo}></Avatar>
-       </Box>
-        <Row className="otp-now">
-
-          <Col width={100}><b>Xác thực mã OTP</b></Col>
-          <Col width={100}>Nhập mã OTP được gửi đến số điện thoại</Col>
-        </Row>
+    <Page name="otp">
+       <Card style={{ textAlign: 'center'}}>
+        <Box mt={4}>
+          <Avatar size={120} src={logo}></Avatar>        
+        </Box>
+        <Box mt={10}>
+          <Row>
+            <Col >
+              <Text size='large' bold>
+                Xác thực mã OTP
+              </Text>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Text size='large'>
+              Nhập mã OTP được gửi đến số điện thoại
+              </Text>
+            </Col>
+          </Row>
+        </Box>
+       
         <Row className="otp-textbox">
           <Col  className = "num-otp-row">
             <input className = "num-otp"></input>
@@ -54,16 +66,36 @@ const OTPPage = () => {
 
           </Col>
         </Row>
-        <Row className = "code-get-again">
-          <p>
-          Bạn không nhận được mã?
-          </p>
-          <Button className ="">
-            Gửi lại mã
-          </Button>
+        
+
+          <Box >
+          <Row>
+            <Col>
+              <Text>
+              Bạn không nhận được mã?
+              </Text>
+            </Col>
+            <Col>
+              <Box>
+              <Button
+              type="button"
+              className="primary"
+              onClick={() => onClickSignup()}
+              >
+              <b>Gửi lại mã</b>
+              </Button>
+              </Box>
+            </Col>
           </Row>
-        <Box>
-          <Button type='submit' responsive className="btn-submit">
+        </Box>
+
+          <Box mx={6} mt={10}>
+          <Button
+            type='submit' 
+            responsive 
+            className="btn-submit"
+            onClick={() => onChangeInput()}
+            >
             Đăng nhập
           </Button>
         </Box>

@@ -1,84 +1,106 @@
 import React from 'react';
 import {
   Page,
-  Navbar,
-  NavTitleLarge,
-  List,
-  ListInput,
-  ListItem,
-  Card,
-  Input,
   Row,
   Col,
   Text,
   Button,
-  Icon,
   Box,
-  Avatar
+  Avatar,
+  Icon,
+  Card
 } from 'zmp-framework/react';
-import FullOrderInput from '../components/checkout/full-order-input';
-import StepCustomer from '../components/checkout/step-customer';
-import StepMessage from '../components/checkout/step-message';
-import StepReceiver from '../components/checkout/step-receiver';
-import VoucherList from '../components/checkout/voucher-list';
-import FormInputEmail from '../components/register/email-input-text';
+import NavbarBack from '../components/navbar-back';
 import store from '../store';
 import logo from '../static/icons/logo.png'
-
-
-const onClickLoginPage = (e) => {
-  store.dispatch("loginpage");
-}
-const onClickSignup = (e) => {
-  store.dispatch("signup");
-}
-const onClickOTP = (e) => {
-  store.dispatch("otp");
-}
+import FormInput from '../components/login/input-text';
 
 
 const LoginPage = () => {
+  const onClickSignup = (e) => {
+    store.dispatch("signup");
+  }
+  const onClickOTP = (e) => {
+    store.dispatch("otp");
+  }
+  const onChangeInput = (e) => {
+    
+  }
 
+  const onForgetPass = (e) => {
+    store.dispatch("forgetpass");
+  }
   return (
-    <Page name="login" className="login">
-      <Card className = "login-card">
-      <Box className ="logo"> 
-       <Avatar size={120} src={logo}></Avatar>
-       </Box>
-        <Row className="login-now">
-          <Col width={100}><b>Đăng nhập ngay</b></Col>
-          <Col width={100}>Nhập email hoặc số điện thoại đã đăng ký</Col>
-        </Row>
-        <Row className="text-phone">
+    <Page name="login">
+        <NavbarBack />
+        <Card style={{ textAlign: 'center'}}>
+        <Box mt={4}>
+          <Avatar size={120} src={logo}></Avatar>        
+        </Box>
+        <Box mt={10}>
+          <Row>
+            <Col >
+              <Text size='large' bold>
+                Đăng nhập ngay
+              </Text>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Text size='large'>
+              Nhập email hoặc số điện thoại đã đăng ký
+              </Text>
+            </Col>
+          </Row>
+        </Box>
+
+        <Box mt={10}>
+          <FormInput />
+        </Box>
+
+        <Box flex flexDirection='column' alignItems='center' mt={10}>
+          <Text size='large' bold>
+            Hoặc đăng nhập với FaceID
+          </Text>
+          <Icon 
+          
+          />
         
-          {/* <Input
-          type="text"
-          clearButton
-          required
-          placeholder="Email / Số điện thoại"
-          className="text-input"
-        ></Input> */}
-        <Col className = "email-input-loging">
-              <FormInputEmail/>
-              </Col>
-        </Row>
-        <div className="faceid">
-          Hoặc đăng nhập với FaceID <br/>
-         
-        </div>
-        <Box>
-          <Button type='submit' responsive className="btn-submit" onClick={() => onClickOTP()}>
+        </Box>
+
+
+        <Box mx={6}>
+          <Button
+            type='submit' 
+            responsive 
+            className="btn-submit"
+            onClick={() => onChangeInput()}
+            >
             Tiếp
           </Button>
         </Box>
 
+        <Box mt={10}>
+          <Row>
+            <Col>
+              <Box ml={6}>
+              Bạn đã có tài khoản?
+              </Box>
+            </Col>
+            <Col>
+              <Box m={0}>
+              <Button
+              type="button"
+              className="primary"
+              onClick={() => onClickSignup()}
+              >
+              <b>Đăng ký ngay</b>
+              </Button>
+              </Box>
+            </Col>
+          </Row>
+        </Box>
 
-        <Row className  = 'login-link'>
-          <p>Bạn đã có tài khoản?</p>
-          <Button onClick={() => onClickSignup()}>
-             Đăng ký ngay
-             </Button>
-        </Row>
       </Card>
     </Page>
   );

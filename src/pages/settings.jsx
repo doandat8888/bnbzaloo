@@ -24,6 +24,14 @@ const onClickLogin = (e) => {
 const onClickSignup = (e) => {
   store.dispatch("signup");
 }
+const onClickForgetPassword = (e) => {
+  store.dispatch("forgetpass");
+}
+const onClickOTP = (e) => {
+  store.dispatch("otp");
+}
+
+
 
 const SettingPage = () => {
 
@@ -32,6 +40,17 @@ const SettingPage = () => {
       <Card className='text-center cover pd10 mg10'>
       <Button onClick={() => onClickLoginPage()}> 
            Đăng Nhập
+      </Button>
+      </Card>
+      <Card className='text-center cover pd10 mg10'>
+      <Button onClick={() => onClickForgetPassword()}> 
+           Quên mật khẩu
+      </Button>
+      </Card>
+
+      <Card className='text-center cover pd10 mg10'>
+      <Button onClick={() => onClickOTP()}> 
+           OTP
       </Button>
       </Card>
       <Card className='text-center cover pd10 mg10'>

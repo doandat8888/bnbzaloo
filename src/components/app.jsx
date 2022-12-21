@@ -37,8 +37,8 @@ const MyApp = () => {
         </Tabbar>
 
         <View id="view-home" main tab tabActive url="/" />
-        <View id="view-catalog" name="catalog" tab url="/catalog/" />
-        <View id="view-settings" name="settings" tab url="/settings/" />
+        <View id="view-catalog" children name="catalog" tab url="/catalog/" />
+        <View id="view-settings" children name="settings" tab url="/settings/" />
       </TabView>
     </App>
   );

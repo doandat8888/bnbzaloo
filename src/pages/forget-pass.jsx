@@ -26,24 +26,55 @@ import StepReceiver from '../components/checkout/step-receiver';
 import VoucherList from '../components/checkout/voucher-list';
 import store from '../store';
 import logo from '../static/icons/logo.png'
+import NavbarBack from '../components/navbar-back';
+import FormInputEmail from '../components/register/email-input-text';
 
-const onClickForgetPass = (e) => {
-  store.dispatch("forgetpass");
+
+const onClickLogin = (e) => {
+  store.dispatch("login");
 }
+
 
 const ForgetPasswordPage = () => {
   return (
-    <Page name="forgetpass" className="forgetpass">
-     <p></p>
-      {/* Tabs */}
-<Tabs>
- <Tab id="tab-1" tabActive>Tab 1</Tab>
- <Tab id="tab-2">Tab 2</Tab>
-</Tabs>
-{/* Switch Between Tabs */}
-<Link tabLink="#tab-1" tabLinkActive>Show Tab 1</Link>
-<Link tabLink="#tab-2">Show Tab 2</Link>
+    <Page name="forgetpass">
+      <Card style={{ textAlign: 'center'}}>
+        <Box mt={10}>
+          <Avatar size={120} src={logo}></Avatar>        
+        </Box>
+        <Box mt={10}>
+          <Row>
+            <Col >
+              <Text size='large' bold>
+                Đăng nhập ngay
+              </Text>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Text size='large'>
+              Nhập email hoặc số điện thoại đã đăng ký
+              </Text>
+            </Col>
+          </Row>
+        </Box>
+      
+        <Box mt={10}>
+          <FormInputEmail />
+        </Box>
+       
+        <Box mx={6} mt={10}>
+          <Button
+            type='submit' 
+            responsive 
+            className="btn-submit"
+            onClick={() => onChangeInput()}
+            >
+            Gửi
+          </Button>
+        </Box>
 
+      </Card>
     </Page>
   );
 }

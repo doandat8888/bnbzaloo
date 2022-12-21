@@ -21,31 +21,31 @@ import {
 } from "zmp-framework/react";
 import store from "../../store";
 export const FormConformPassword = (props) => {
-    // const {text, csscolor} = props
-    // const _class = csscolor + ' chip'
-    return (
+  // const {text, csscolor} = props
+  // const _class = csscolor + ' chip'
+  return (
 
-<Row className="input-text pd">
-                  
-                  <Col width='330px'>
-                    
-                  <Input 
-                    className="form-input"
-                    type="password"
-                    placeholder="Nhập lại mật khẩu của bạn"
-                    clearButton
-                    name="password"
-                    required
-                    errorMessage="Mật khẩu không đúng định dạng"
-                    pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$'
-                    validate
-                  >
-                  </Input>
-                  </Col>
-                </Row>
-                
+    <Row className="input-text pd">
 
-    )
+      <Col width='330px'>
+
+        <Input
+          className="form-input"
+          type="password"
+          placeholder="Nhập lại mật khẩu của bạn"
+          clearButton
+          name="password"
+          required
+          errorMessage="Mật khẩu không đúng định dạng"
+          pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$'
+          validate
+        >
+        </Input>
+      </Col>
+    </Row>
+
+
+  )
 }
 
 FormConformPassword.displayName = 'bnb-input-phone-number'

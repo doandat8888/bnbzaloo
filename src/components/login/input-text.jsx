@@ -20,7 +20,7 @@ import {
   ListInput,
 } from "zmp-framework/react";
 import store from "../../store";
-export const FormInputEmail = (props) => {
+export const FormInput = (props) => {
   // const {text, csscolor} = props
   // const _class = csscolor + ' chip'
   return (
@@ -31,15 +31,13 @@ export const FormInputEmail = (props) => {
 
         <Input
           className="form-input"
-          type="email"
-          placeholder="Email của bạn"
+          type="text"
+          placeholder="Email / Số điện thoại"
           clearButton
-          //label="Số điện thoại"
-          name="email"
+          name="full-name"
           required
-          errorMessage="Email chưa đúng định dạng"
+          errorMessage="bắt buộc nhập"
           validate
-          onValidate={(isValid) => setInputValid(isValid)}
         >
         </Input>
       </Col>
@@ -49,6 +47,6 @@ export const FormInputEmail = (props) => {
   )
 }
 
-FormInputEmail.displayName = 'bnb-input-phone-number'
+FormInput.displayName = 'bnb-input'
 
-export default FormInputEmail
+export default FormInput

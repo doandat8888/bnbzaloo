@@ -24,44 +24,44 @@ import store from "../../store";
 
 
 export const FormInputCode = (props) => {
-    // const {text, csscolor} = props
-    // const _class = csscolor + ' chip'
-    return (
+  // const {text, csscolor} = props
+  // const _class = csscolor + ' chip'
+  return (
 
-<Row className="form-group item-input">
-                  <Col width='60'>
-                  <Input
-                    type = "text"
-                    placeholder ="Nhập mã giới thiệu"
-                    clearButton
-                    ></Input>
-                  </Col>
-                  <Col width='15'>
-                    <p>Hoặc</p>
-                     </Col>
-                  <Col width='25'>
-                  <Picker
-                  displayValues
-            defaultSelect={['Quét mã']}
+    <Row className="form-group item-input">
+      <Col width='60'>
+        <Input
+          type="text"
+          placeholder="Nhập mã giới thiệu"
+          clearButton
+        ></Input>
+      </Col>
+      <Col width='15'>
+        <p>Hoặc</p>
+      </Col>
+      <Col width='25'>
+        <Picker
+          displayValues
+          defaultSelect={['Quét mã']}
 
-            data={[
+          data={[
             {
-                textAlign: 'center',
-                values: ['Chụp ảnh','Chọn ảnh từ thư viện'],
-                displayValues: [
-                  'Chụp ảnh',
-                  'Chọn ảnh từ thư viện'
-                ]
+              textAlign: 'center',
+              values: ['Chụp ảnh', 'Chọn ảnh từ thư viện'],
+              displayValues: [
+                'Chụp ảnh',
+                'Chọn ảnh từ thư viện'
+              ]
             }
-            ]}
-            formatValue={(values, displayValues) => {
+          ]}
+          formatValue={(values, displayValues) => {
             return `${displayValues[0]}`;
-            }}
-            inputId='custom-picker-1'
-            />
-                  </Col>
-                </Row>
-    )
+          }}
+          inputId='custom-picker-1'
+        />
+      </Col>
+    </Row>
+  )
 }
 
 FormInputCode.displayName = 'bnb-input-phone-number'

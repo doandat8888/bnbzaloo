@@ -106,6 +106,8 @@ const store = createStore({
       saveProductsToCache(products)
       state.loadingProducts = false
     },
+
+    // move to checkout page
     async checkout({ state }) {
       const { cart, selectedDiscount, shipping, selectedAddress, shippingTime, note } = state
       let shop = null
@@ -151,6 +153,7 @@ const store = createStore({
         }).open()
       }
     },
+
     // move to register page
     async signup({ dispatch }) {
       const cachedUser = await loadDataArrayFromCache("userLogin")
@@ -187,16 +190,9 @@ const store = createStore({
       zmp.views.main.router.navigate('/register', {
         animate: false
       })
-
-      // zmp.views.main.router.navigate('/product-detail?id=6194a45a60da790e0009eb73', {
-      //   animate: false
-      // })
-
-      // zmp.views.main.router.navigate('/home', {
-      //   animate: false
-      // })
-
     },
+
+    // move to login page
     async loginpage({ dispatch }) {
       const cachedUser = await loadDataArrayFromCache("userLogin")
       if (cachedUser) {
@@ -233,15 +229,48 @@ const store = createStore({
         animate: false
       })
 
-      // zmp.views.main.router.navigate('/product-detail?id=6194a45a60da790e0009eb73', {
-      //   animate: false
-      // })
+    },
 
-      // zmp.views.main.router.navigate('/home', {
-      //   animate: false
-      // })
+    // move to forget password page
+    async forgetpass({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+
+      // const success = await login(bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+
+
+      zmp.views.main.router.navigate('/forget-pass', {
+        animate: false
+      })
 
     },
+
+    //move to otp page
     async otp({ dispatch }) {
       const cachedUser = await loadDataArrayFromCache("userLogin")
       if (cachedUser) {
@@ -278,15 +307,48 @@ const store = createStore({
         animate: false
       })
 
-      // zmp.views.main.router.navigate('/product-detail?id=6194a45a60da790e0009eb73', {
-      //   animate: false
-      // })
+    },
 
-      // zmp.views.main.router.navigate('/home', {
-      //   animate: false
-      // })
+    // move to history order page
+    async historyorder({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+
+      // const success = await login(bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+
+
+      zmp.views.main.router.navigate('/history-order', {
+        animate: false
+      })
 
     },
+
+    // move to home page
     async login({ dispatch }) {
       const cachedUser = await loadDataArrayFromCache("userLogin")
       if (cachedUser) {

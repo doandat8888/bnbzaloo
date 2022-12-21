@@ -24,7 +24,6 @@ import VoucherList from '../components/checkout/voucher-list';
 import FormInputEmail from '../components/register/email-input-text';
 import store from '../store';
 import logo from '../static/icons/logo.png'
-import '../css/login.less';
 
 
 const onClickLoginPage = (e) => {

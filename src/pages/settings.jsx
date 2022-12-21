@@ -32,8 +32,8 @@ const SettingPage = () => {
       <Card className='text-center cover pd10 mg10'>
       <Button onClick={() => onClickLoginPage()}> 
            Đăng Nhập
-           </Button>
-           </Card>
+      </Button>
+      </Card>
       <Card className='text-center cover pd10 mg10'>
 
           <Button onClick={() => onClickLogin()}>

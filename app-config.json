@@ -24,6 +24,8 @@
     "/catalog",
     "/register",
     "/login",
-    "/otp"
+    "/forget-pass",
+    "/otp",
+    "/history-order"
   ]
 }

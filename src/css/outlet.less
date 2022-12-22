@@ -1,0 +1,143 @@
+@import "./common.less";
+.filter-loaction-sheet{
+  width: 375px !important;
+  height: 630px !important;
+ 
+}
+
+.btn-province{
+  border: 1px solid black ;
+  background: #F2F2F2;
+  border-radius: 20px;
+  .mg(10px);
+}
+.location-sheet{
+  display: flex;
+  flex-wrap: wrap;
+}
+.btn-btn-apply{
+  background: #DA2128;
+  border-radius: 20px;
+  width: 330px;
+  height: 53;
+  text-align: center;
+  .mg(305px 23px 23px 22px);
+}
+.span-location
+{
+  color: rgba(218, 33, 40, 1);
+  font-size: 15px;
+}
+.filter1{
+  height: 20px;
+  .pd(5px 0 0 15px)
+}
+.btn-filter{
+  padding-bottom: 35px;
+}
+.outlet
+{
+  background-color: @f;
+  .btn-back{
+    .pd(20px)
+  }
+  .back-icon{
+    padding-top: 20px;
+  }
+  .header-outlet{
+    .pd(5px 40px);
+    font-size: 20px;
+  }
+  .map{
+    height: 198px;
+
+  }
+  .search-outlet{
+    .form-input{
+      border-radius: 20px;
+    }
+    .name-placeholder{
+      font-size: 15px;
+    }
+  }
+
+  .filter{
+    .col-shop-location{
+      width: 258px;
+      height: 15px;
+      font-weight: 400;
+      font-size: 15px;
+    }
+    .btn-filter{
+      border: 0;
+      color: #DA2128 !important;
+      font-weight: 400;
+      font-size: 15px;
+      
+    }
+    
+  }
+ 
+  .shop-location{
+    width: 375px;
+    height: 365px;
+    .shop-row{
+        .pd(20px);
+      .shop-col{
+        width: 160px;
+        height: 243px;
+        border: 1px solid rgba(118, 118, 118, 1);
+        border-radius: 20px;
+        .img{
+          .pd(25px 34px 0px 35px);
+          .mg(0);
+          width: 91px;
+          height: 91px;
+        }
+        .shop-name{
+          width: 140px;
+          height: 17px;
+          padding-left: 10px;
+          font-weight: 500;
+          .mg(24px 0px 0px 0px);
+          line-height: 17px;
+          text-align: center;
+        }
+        .shop-adr{
+          .mg(7px 10px 10px 10px);
+          font-size: 15px;
+          width: 140px;
+          height: 15px;
+          color: @black03;
+          font-weight: 400;
+          text-align: center;
+        }
+        .shop-state-div{
+          display: flex;
+          width: 116px;
+          height: 29px;
+          .mg(0px 22px 25px 22px);
+          border-radius: 20px;
+          background: #DA2128;
+          .icon-check{
+            width: 13px;
+            height: 13px;
+            .mg(8px 0px 8px 10px);
+          }
+          .shop-state{
+            width: 78px;
+            height: 13px;
+            font-size: 13px;
+            text-align: center;
+            font-weight: 400;
+            .mg(8px 10px 8px 28px);
+            color: #FAFAFA;
+            z-index: 2000 !important;
+
+          }
+        }
+
+      }
+    }
+  }
+}

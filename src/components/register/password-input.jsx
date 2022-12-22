@@ -33,7 +33,6 @@ export const FormInputPassword = (props) => {
                     className="form-input"
                     type="password"
                     placeholder = 'Mật khẩu của bạn'
-                    info="Mật khẩu từ 6-30 kí tự"
                     clearButton
                     name="password"
                     required

@@ -25,6 +25,8 @@
     "/register",
     "/login",
     "/remember",
-    "/otp"
+    "/otp",
+    "/outlet",
+    "/products-outlet"
   ]
 }

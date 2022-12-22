@@ -24,7 +24,12 @@ const onClickLogin = (e) => {
 const onClickSignup = (e) => {
   store.dispatch("signup");
 }
-
+const onClickOutlet = (e) => {
+  store.dispatch("outlet");
+}
+const onClickOutletPro = (e) => {
+  store.dispatch("outletPro");
+}
 const SettingPage = () => {
 
   return (
@@ -43,6 +48,16 @@ const SettingPage = () => {
       <Card className='text-center cover pd10 mg10'>
           <Button onClick={() => onClickSignup()}> 
            Đăng ký
+           </Button>
+      </Card>
+      <Card className='text-center cover pd10 mg10'>
+          <Button onClick={() => onClickOutlet()}> 
+           Danh sách cửa hàng
+           </Button>
+      </Card>
+      <Card className='text-center cover pd10 mg10'>
+          <Button onClick={() => onClickOutletPro()}> 
+           Danh sách sản phẩm trong cửa hàng
            </Button>
       </Card>
 

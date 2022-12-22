@@ -30,7 +30,9 @@ const onClickForgetPassword = (e) => {
 const onClickOTP = (e) => {
   store.dispatch("otp");
 }
-
+const onClickHistoryOrder = (e) => {
+  store.dispatch("historyorder");
+}
 
 
 const SettingPage = () => {
@@ -38,31 +40,40 @@ const SettingPage = () => {
   return (
     <Page name="settings" >
       <Card className='text-center cover pd10 mg10'>
-      <Button onClick={() => onClickLoginPage()}> 
-           Đăng Nhập
-      </Button>
-      </Card>
-      <Card className='text-center cover pd10 mg10'>
-      <Button onClick={() => onClickForgetPassword()}> 
-           Quên mật khẩu
-      </Button>
+        <Button onClick={() => onClickLoginPage()}>
+          Đăng Nhập
+        </Button>
       </Card>
 
       <Card className='text-center cover pd10 mg10'>
-      <Button onClick={() => onClickOTP()}> 
-           OTP
-      </Button>
+        <Button onClick={() => onClickForgetPassword()}>
+          Quên mật khẩu
+        </Button>
       </Card>
-      <Card className='text-center cover pd10 mg10'>
 
-          <Button onClick={() => onClickLogin()}>
-             Trang chủ
-             </Button>
-             </Card>
+
       <Card className='text-center cover pd10 mg10'>
-          <Button onClick={() => onClickSignup()}> 
-           Đăng ký
-           </Button>
+        <Button onClick={() => onClickOTP()}>
+          OTP
+        </Button>
+      </Card>
+
+      <Card className='text-center cover pd10 mg10'>
+        <Button onClick={() => onClickHistoryOrder()}>
+          Lịch sử đặt hàng
+        </Button>
+      </Card>
+
+      <Card className='text-center cover pd10 mg10'>
+        <Button onClick={() => onClickLogin()}>
+          Trang chủ
+        </Button>
+      </Card>
+
+      <Card className='text-center cover pd10 mg10'>
+        <Button onClick={() => onClickSignup()}>
+          Đăng ký
+        </Button>
       </Card>
 
     </Page>

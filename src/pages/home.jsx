@@ -26,7 +26,6 @@ const HomePage = () => {
       <HomeQuestionStart />
       <AllFocusCategory />
       <HomeCategoryProduct />
-
     </Page>
   );
 }

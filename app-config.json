@@ -24,6 +24,13 @@
     "/catalog",
     "/register",
     "/login",
-    "/otp"
+    "/otp",
+    "/danhmucHoa",
+    "/sanpham",
+    "/stepone",
+    "/steptwo",
+    "/stepthree",
+    "/stepfour",
+    "/stepthree-next"
   ]
 }

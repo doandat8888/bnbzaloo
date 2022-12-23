@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import store from '../../store'
 
-import  {
+import {
   Icon,
   Box,
   Button,
@@ -25,14 +25,14 @@ const AllFocusCategory = () => {
   const _update = useStore("updateTime");
 
   useEffect(() => {
-    if(!loading){
+    if (!loading) {
       return;
     }
     getAllFocusCategory().then((res) => {
 
       loading = false;
 
-      if(res.code == "ok"){
+      if (res.code == "ok") {
         categories = res.allCategories;
         store.dispatch("setUpdate", Math.random());
       } else {
@@ -40,27 +40,31 @@ const AllFocusCategory = () => {
       }
     }, (err) => {
 
-    } );
+    });
   }, []);
 
-  if(categories == null){
+  if (categories == null) {
     return <></>
+  }
+
+  const onClickXemSp = () => {
+    store.dispatch("DanhmucHoa");
   }
   return (
     <Card className="text-center cates">
       <Title size="small">Danh Mục Sản Phẩm</Title>
 
       <Grid columns={4} noBorder="true" className="cate-item">
-            {categories.map((cate, index) => (
+        {categories.map((cate, index) => (
           <GridItem
-
-          key={cate._id}
+            key={cate._id}
             label={cate.name_home}
+            onClick={() => onClickXemSp()} 
           >
-            <img src={cate.image_home_url}  />
+            <img src={cate.image_home_url} />
           </GridItem>
-            ))}
-        </Grid>
+        ))}
+      </Grid>
 
     </Card>
   );

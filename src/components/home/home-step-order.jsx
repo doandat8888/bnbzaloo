@@ -1,8 +1,11 @@
 import React from "react";
 import { Icon, Box, Button, Row, Col, Card, SwiperSlide, Text, Swiper, Title } from "zmp-framework/react";
-
+import store from '../../store';
 
 const HomeStepOrder = () => {
+  const onClickOrder = () => {
+    store.dispatch("Stepone");
+  }
   return (
     <Card className="steps-ctn cover text-center">
         <Title size="small">Đặt quà tặng nhanh chóng trong 4 bước</Title>
@@ -36,10 +39,8 @@ const HomeStepOrder = () => {
 
         <div className="text-center pd10 mg10">
         <Button className="btn-primary btn"
-            onClick={() => onClickChooseButtonType(BUTTON_TYPE.TERTIARY)}
-          >
-
-
+            //onClick={() => onClickChooseButtonType(BUTTON_TYPE.TERTIARY)}
+            onClick={() => onClickOrder()}>
             <Icon
                 className=''
                 zmp='zi-chevron-right'

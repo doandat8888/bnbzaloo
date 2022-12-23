@@ -333,6 +333,280 @@ const store = createStore({
 
     },
 
+    //DanhmucHoa
+    async DanhmucHoa({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+
+      // const success = await login(bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+
+
+      zmp.views.main.router.navigate('/danhmucHoa', {
+        animate: false
+      })
+
+      // zmp.views.main.router.navigate('/product-detail?id=6194a45a60da790e0009eb73', {
+      //   animate: false
+      // })
+
+      // zmp.views.main.router.navigate('/home', {
+      //   animate: false
+      // })
+
+    },
+
+    //Sanpham
+    async sanpham({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+
+      // const success = await login(bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+
+
+      zmp.views.main.router.navigate('/sanpham', {
+        animate: false
+      })
+
+      // zmp.views.main.router.navigate('/product-detail?id=6194a45a60da790e0009eb73', {
+      //   animate: false
+      // })
+
+      // zmp.views.main.router.navigate('/home', {
+      //   animate: false
+      // })
+
+    },
+
+    //Step-one
+    async Stepone({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+
+
+      zmp.views.main.router.navigate('/stepone', {
+        animate: false
+      })
+    },
+
+    //Step-two
+    async steptwo({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+
+
+      zmp.views.main.router.navigate('/steptwo', {
+        animate: false
+      })
+    },
+
+    //Step-three
+    async stepthree({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+
+
+      zmp.views.main.router.navigate('/stepthree', {
+        animate: false
+      })
+    },
+
+    //Step-three-next
+    async stepthreenext({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+
+
+      zmp.views.main.router.navigate('/stepthree-next', {
+        animate: false
+      })
+    },
+
+    //Step-four
+    async stepfour({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+
+
+      zmp.views.main.router.navigate('/stepfour', {
+        animate: false
+      })
+    },
+
     async clearAllCache(){
       await clearAllCache()
     }

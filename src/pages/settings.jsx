@@ -45,11 +45,6 @@ const SettingPage = () => {
            Đăng ký
            </Button>
       </Card>
-      <Card className='text-center cover pd10 mg10'>
-          <Button onClick={() => onClickDanhmucHoa()}> 
-           Danh mục hoa
-           </Button>
-      </Card>
 
     </Page>
   );

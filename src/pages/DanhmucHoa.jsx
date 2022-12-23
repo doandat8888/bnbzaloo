@@ -1,105 +1,165 @@
-import React from 'react';
-import {
-  Page,
-  Navbar,
-  NavTitleLarge,
-  List,
-  ListItem,
-  Card,
-  Text,
-  Button,
-  Icon,
-  Row,
-  Col,
-  Box,
-  zmp,
-  ListInput,
-  Checkbox
-} from 'zmp-framework/react';
-import HomePage from '.';
-import NameInput, { FormInputName } from '../components/register/name-input-text';
+import React from "react";
+import { Icon, Box, useStore, Button, Row, Col, Text, Grid, GridItem } from "zmp-framework/react";
+import { zmp } from 'zmp-framework/react';
 import store from '../store';
-import FormInput from '../components/common/form-input-phone-number';
-
 import '../css/DanhmucHoa.less';
 
-const onClickDanhmucHoa = (e) => {
-  store.dispatch("signup");
-}
+import HomeQuestionStart from '../components/home/home-question-start';
+import HoaImg from '../static/icons/hoa.png';
 
-const RegistetPage = () => {
-//aaaaaa
+const DanhmucHoaPage = () => {
+
+  const onClickAllClear = (e) => {
+    store.dispatch("clearAllCache");
+  }
+  const onCartClick = (e) => {
+    zmp.views.main.router.navigate('/checkout', {
+      animate: true
+    })
+  }
+  const cart = useStore("cart");
+
+  const onClickSanpham = (e) => {
+    store.dispatch("sanpham");
+  }
+
   return (
-    <Page name="register" className="register" >
-      <Card className='text-form' >
-          <Row className='header'>
-            <Col width="5">
-              <Icon
-                zmp='zi-chevron-left'
-                className='back-icon'
-              />
-            </Col>
-            <Col width="95">
-              <p className="maincolor text-center">Đăng ký ngay </p>
-            </Col>
-          </Row>
-          <p className="text-color-3 text-center">Để khám phá tính năng của B&B nhé</p>
-        <Row className="text-name">
-          
-          <Icon
-            zmp='zi-user'
-            className="user-icon"
-          />
-          <FormInputName/>
-         
-        </Row>
-        <Row>
-         <FormInput/>
-        </Row>
-        <Row className = 'text-email'>
-        {/* <Icon
-            zmp='zi-user'
-            className="user-icon"
-          /> */}
-          <FormInputEmail/>
-        </Row>
-        <Row>
-          <FormInputPassword/>
-        </Row>
-        <Row>
-          <FormConformPassword/>
-        </Row>
-        <Row  className ='intro-code'>
-          <FormInputCode/>
-        </Row>
-        <Row>
+    <Col className="danhmucHoa">
+      <Row className="top-nav pd10 bgf">
+        <Col width="30" className="top-text">
           <Box>
-            <Checkbox name='rule' label='Tôi đồng ý với các điều khoản mà Belove & Beyond cung cấp.' value='rule' />
+            <Icon
+              className=''
+              zmp='zi-chevron-left'
+            />
+            <Text className="text inblock text-color-3" style={{ marginBottom: 0 }}>
+              Hoa
+            </Text>
           </Box>
-        </Row>
-        <Row>
-          <Button
-           type='submit' 
-           responsive 
-           className="btn-submit"
-           onClick={() => onClickLoginPage()}
+        </Col>
+        <Col width="60" className="top-acts">
+          <Box flex justifyContent="flex-end" flexDirection='row' flexWrap>
+            <Button
+              className='btn-trans'
+              onClick={() => onClickAllClear()}
             >
-            Đăng ký
+              <Icon
+                className=''
+                zmp='zi-qrline'
+              />
+            </Button>
 
-          </Button>
-        </Row>
-        <Row className  = 'login-link'>
-          <p>Bạn đã có tài khoản?</p>
-          <Button onClick={() => onClickLoginPage()}>
-             Đăng nhập ngay
-             </Button>
-        </Row>
-      </Card>
+            <Button
+              className='btn-trans'
+              onClick={() => onClickAllClear()}
+            >
+              <Icon
+                className=''
+                zmp='zi-search'
+              />
+            </Button>
 
+            <Button
+              className='btn-trans'
+              onClick={() => onClickAllClear()}
+            >
+              <Icon
+                className=''
+                zmp='zi-notif'
+              />
+            </Button>
 
-    </Page>
+            <Button
+              className='btn-trans'
+              onClick={() => onCartClick()}
+            >
+              {cart.length > 0 ?
+                <i className="badge-counter">{cart.length}</i>
+                :
+                <></>
+              }
+              <span className="material-icons">shopping_cart</span>
+
+            </Button>
+
+          </Box>
+        </Col>
+      </Row>
+
+      <HomeQuestionStart />
+
+      <Row className="danhmuc">
+        <h1 className="text-title">Danh mục sản phẩm <span>Hoa</span></h1>
+        <Grid columns={4} noBorder="true" className="cate-item">
+          <GridItem onClick={() => onClickSanpham()}>
+            <img src={HoaImg} />
+            <p>Combo quà tặng sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Hoa sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Hoa sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Hoa sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Combo quà tặng sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Hoa sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Hoa sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Hoa sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Combo quà tặng sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Hoa sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Hoa sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Hoa sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Combo quà tặng sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Hoa sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Hoa sinh nhật</p>
+          </GridItem>
+          <GridItem>
+            <img src={HoaImg} />
+            <p>Hoa sinh nhật</p>
+          </GridItem>
+        </Grid>
+      </Row>
+    </Col>
   );
-}
+};
 
-export default RegistetPage;
-
+export default DanhmucHoaPage
+  ;

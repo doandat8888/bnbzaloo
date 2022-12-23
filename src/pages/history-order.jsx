@@ -20,7 +20,9 @@ import {
   Tabs,
   Link,
   Tab,
-  Toggle
+  Toggle,
+  Swiper,
+  SwiperSlide
 } from 'zmp-framework/react';
 import FullOrderInput from '../components/checkout/full-order-input';
 import StepCustomer from '../components/checkout/step-customer';
@@ -44,33 +46,27 @@ const HistoryPage = () => {
       <Box>
         <NavbarBack title='Lịch sử đặt hàng' linkRight="/find-order" labelRight='Search'/>
       </Box>
+      <Card>
+        <Box flex flexDirection="row" flexWrap>
+          <Box>
+            <Button typeName="primary">
+            Chờ thanh toán
+            </Button>
+          </Box>
+          <Box>
+            <Button typeName="secondary">
+            Chờ admin xử lý
+            </Button>
+          </Box>
+          <Box>
+            <Button typeName="secondary">
+            Chờ xác nhận
+            </Button>
+          </Box>
+        </Box>      
+        <Swiper></Swiper>
+      </Card>
       
-      <TabView >
-            <Tabbar top >
-              <Link tabLinkActive>
-                <Button>Chờ thanh toán</Button>
-              </Link>
-              <Link>
-                <Button>Chờ admin xử lý</Button>
-              </Link>
-              <Link>
-              <Button>Chờ xác nhận</Button>
-              </Link>
-            </Tabbar>
-
-            <Tabs>
-                <Tab tabActive>
-                    
-                </Tab>
-                <Tab>
-                   
-                </Tab>
-                <Tab>
-                   
-                </Tab>
-            </Tabs>
-        </TabView>
-        
     </Page>
   );
 }

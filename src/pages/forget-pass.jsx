@@ -60,7 +60,9 @@ const ForgetPasswordPage = () => {
         </Box>
       
         <Box mt={10}>
-          <FormInputEmail />
+          <FormInputEmail 
+            errorMessage="Email chưa đăng ký tài khoản"
+          />
         </Box>
        
         <Box mx={6} mt={10}>

@@ -20,6 +20,8 @@ import {
   ListInput,
 } from "zmp-framework/react";
 import store from "../../store";
+
+
 export const FormInput = (props) => {
   // const {text, csscolor} = props
   // const _class = csscolor + ' chip'
@@ -27,7 +29,7 @@ export const FormInput = (props) => {
 
     <Row className="input-text pd">
 
-      <Col width='330px'>
+      <Col width='330px' height='53px'>
 
         <Input
           className="form-input"

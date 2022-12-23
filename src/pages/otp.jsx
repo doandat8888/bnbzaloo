@@ -51,7 +51,7 @@ const OTPPage = () => {
        
         <Row className="otp-textbox">
           <Col  className = "num-otp-row">
-            <input className = "num-otp"></input>
+            <input height='60px' width='55px'></input>
           </Col>
           <Col  className = "num-otp-row">
           <input className = "num-otp"></input>
@@ -66,8 +66,15 @@ const OTPPage = () => {
 
           </Col>
         </Row>
+        <ul>
+        <li className="step ">
+          <div className="step-content">
+          <span className="step-retangle"></span>
+          
+          </div>
+        </li>
+        </ul>
         
-
           <Box >
           <Row>
             <Col>

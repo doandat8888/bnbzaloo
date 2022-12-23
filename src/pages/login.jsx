@@ -23,7 +23,7 @@ const LoginPage = () => {
   const onClickOTP = (e) => {
     store.dispatch("otp");
   }
-  const onChangeInput = (e) => {
+  const handleSubmit = (e) => {
     
   }
 
@@ -58,7 +58,7 @@ const LoginPage = () => {
           <FormInput />
         </Box>
 
-        <Box flex flexDirection='column' alignItems='center' mt={10}>
+        <Box flex flexDirection='column' alignItems='center' mt={10} >
           <Text size='large' bold>
             Hoặc đăng nhập với FaceID
           </Text>
@@ -74,7 +74,7 @@ const LoginPage = () => {
             type='submit' 
             responsive 
             className="btn-submit"
-            onClick={() => onChangeInput()}
+            onClick={() => handleSubmit()}
             >
             Tiếp
           </Button>

@@ -48,8 +48,8 @@ export const ProductActionButtons = (props) => {
     <Row className="bgf text-center pd15">
     <Col>
       <Box  m={0} className='bg-color-w300'>
-      <Button onClick={() => setShowAddToCart(true)} className="btn btn-outline maincolor " iconZMP='zi-zi-save-to-collection'>
-    Thêm vào giỏ hàng
+        <Button onClick={() => setShowAddToCart(true)} className="btn btn-outline maincolor " iconZMP='zi-zi-save-to-collection'>
+            Thêm vào giỏ hàng
         </Button>
       </Box>
     </Col>

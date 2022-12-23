@@ -333,9 +333,42 @@ const store = createStore({
 
     },
 
-    async clearAllCache(){
-      await clearAllCache()
-    }
+    async chooseGift({ dispatch }) {
+      const cachedUser = await loadDataArrayFromCache("userLogin")
+      if (cachedUser) {
+        dispatch('setUser', cachedUser)
+      }
+
+      var zaloToken = await getAccessToken() // Zalo
+      saveDataArrayToCache("zalo_token", zaloToken)
+
+      var bnbtoken = await loadTokenFromCache()
+      if(!bnbtoken) {
+        const ret = await initToken()
+        if(ret.code == "ok"){
+          bnbtoken = ret.token
+        } else {
+          alert(ret.msg)
+        }
+
+      }
+
+      dispatch("setToken", bnbtoken)
+
+      // const success = await login(bnbtoken)
+      const success = false
+      if (success) {
+        const user = await getCurrentUser()
+        if (user) {
+          dispatch('setUser', user)
+        }
+      }
+      zmp.views.main.router.navigate('/choose-gift', {
+        animate: true
+      })
+
+
+    },
   }
 
 })

@@ -1,0 +1,120 @@
+.choose-gift-page {
+    width: 100%;
+    .choose-gift-page-title {
+      text-align: center;
+      font-size: 14px;
+      color: #767676;
+      margin: 16px 0;
+      .choose-gift-page-subtitle {
+        color: #DA2128;
+        display: inline-block;
+      }
+    }
+    .people {
+        text-align: center;
+        .people-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 6px;
+        }
+        .people-province {
+            color: #DA2128;
+        }
+        .people-img-container {
+            .people-img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    }
+    .view-btn-list {
+        margin-top: 12px;
+        padding: 0 16px;
+        .view-btn-item {
+            border: 1px solid #DA2128;
+            outline: none;
+            border-radius: 20px;
+            font-size: 14px;
+            padding: 8px;
+            color: #DA2128;
+            background-color: #FAFAFA;
+            
+        }
+        .active {
+            background-color: #DA2128;
+            color: #FAFAFA;
+        }
+    }
+    .gift-product-list {
+        height: 400px;
+        padding: 20px;
+        overflow: scroll;
+        .gift-product-item {
+            .gift-product-item-container {
+                position: relative;
+                .gift-product-item-img-container {
+                    text-align: center;
+                }
+                .gift-product-item-combo {
+                    position: absolute;
+                }
+                .gift-product-info {
+                    .gift-product-info-top {
+                      padding: 0 4px;
+                      display: flex;
+                      justify-content: space-between;
+                      .gift-product-info-top-item {
+                        padding: 0 4px;
+                        font-size: 9px;
+                        /* identical to box height */
+                        
+                        border-radius: 5px;
+                        
+                      }
+                      .id {
+                        background-color: #F2F2F2;
+                        color: #000000;
+                      }
+                      .type {
+                        background-color: #DA2128;
+                        color: #FAFAFA;
+                      }
+                      .ship {
+                        background-color: #F2F2F2;
+                        color: #DA2128;
+                      }
+                    }
+
+                    .gift-product-info-name {
+                      font-size: 14px;
+                      text-align: center;
+                      width: 70%;
+                      margin: 4px auto 0px auto;
+                    }
+
+                    .gift-product-info-price {
+                      font-size: 14px;
+                      text-align: center;
+                      width: 70%;
+                      margin: 8px auto 0px auto;
+                      color: #DA2128;
+                      font-weight: bold;
+                    }
+
+                    .gift-product-info-price-old {
+                      font-size: 13px;
+                      text-align: center;
+                      width: 70%;
+                      margin: 4px auto 4px auto;
+                      color: #D9D9D9;
+                      font-weight: bold;
+                    }
+                }
+            }
+            border: 0.5px solid #767676;
+            border-radius: 20px;
+            margin: 14px 0;
+        }
+    }
+}
+

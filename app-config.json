@@ -25,6 +25,7 @@
     "/register",
     "/login",
     "/remember",
-    "/otp"
+    "/otp",
+    "/choose-gift"
   ]
 }

@@ -16,8 +16,9 @@ import {
   Tab
 } from "zmp-framework/react";
 import store from "../store";
-import '../css/remember.less';
+import '../css/remember/remember.less';
 import mainScreen from "../static/img/mainScreen.png";
+import background from "../static/img/background.png";
 import DayRemember from "../components/remember/day-remember";
 import PeopleList from "../components/remember/people-list";
 
@@ -27,7 +28,7 @@ const RememberPage = () => {
 
   return (
     <Page name='remember' className='remember-page'>
-        <img src={mainScreen} className="remember-page-background"/>
+        <img src={background} className="remember-page-background"/>
         <Title className='remember-title'>Ghi nhớ</Title>
         <Text className='remember-sub-title'>Nơi lưu giữ những ngày đặc biệt của bạn</Text>
         <TabView className='remember-content'>

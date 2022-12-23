@@ -31,23 +31,21 @@ import StepReceiver from '../components/checkout/step-receiver';
 import VoucherList from '../components/checkout/voucher-list';
 import FormInputEmail from '../components/register/email-input-text';
 import store from '../store';
-import logo from '../static/icons/logo.png'
+import logo from '../static/icons/logo.png';
 import NavbarBack from '../components/navbar-back';
+import WaitPayment from '../components/history-order/wait-payment';
 
 
-const onClickHistoryOrder = (e) => {
-  store.dispatch("historyorder");
-}
 
 const HistoryPage = () => {
  
   return (
     <Page name="historyorder">
       <Box>
-        <NavbarBack title='Lịch sử đặt hàng' linkRight="/find-order" labelRight='Search'/>
+        <NavbarBack title='Lịch sử đặt hàng' linkRight="/find-order" labelRight={''}/>
       </Box>
       <Card>
-        <Box flex flexDirection="row" flexWrap>
+        {/* <Box flex flexDirection="row" flexWrap>
           <Box>
             <Button typeName="primary">
             Chờ thanh toán
@@ -63,9 +61,34 @@ const HistoryPage = () => {
             Chờ xác nhận
             </Button>
           </Box>
-        </Box>      
-        <Swiper></Swiper>
+        </Box>       */}
       </Card>
+
+      <TabView className='history-order-content'>
+            <Tabbar top id="app-tab-bar" className='history-order-tabs'>
+              <Link tabLink="#view-wait-payment" tabLinkActive>
+                <Text className='history-order-content-txt'>Chờ thanh toán</Text>
+              </Link>
+              <Link tabLink="#view-admin-handle">
+                <Text className='history-order-content-txt'>Chờ admin xử lý</Text>
+              </Link>
+              <Link tabLink="#view-wait-accept">
+                <Text className='history-order-content-txt'>Chờ xác nhận</Text>
+              </Link>
+            </Tabbar>
+
+            <Tabs>
+                <Tab id="view-wait-payment" className="page-content" tabActive>
+                    <WaitPayment />
+                </Tab>
+                <Tab id="view-admin-handle" className="page-content">
+                    {/* <AdminHandle /> */}
+                </Tab>
+                <Tab id="view-wait-accept" className="page-content">
+                    {/* <WaitAccept /> */}
+                </Tab>
+            </Tabs>
+        </TabView>
       
     </Page>
   );

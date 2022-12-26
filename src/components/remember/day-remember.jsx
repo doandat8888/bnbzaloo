@@ -73,41 +73,31 @@ const DayRemember = () => {
                 name: 'Emily',
                 relationship: 'Em gái',
                 img: familyPeople1,
-                event: {
-                    name: '',
-                },
+                
             },
             {
                 name: 'Anh Đào',
                 relationship: 'Mẹ',
                 img: familyPeople2,
-                event: {
-                  name: ''
-                },
+                
             },
             {
                 name: 'Ben',
                 relationship: 'Cha',
                 img: familyPeople3,
-                event: {
-                  name: ''
-                },
+                
             },
             {
                 name: 'Mẫn Nghi',
                 relationship: 'Cháu gái',
                 img: familyPeople4,
-                event: {
-                  name: ''
-                },
+               
             },
             {
                 name: 'Ayden',
                 relationship: 'Cháu trai',
                 img: familyPeople5,
-                event: {
-                  name: ''
-                },
+                
             },
           ],
       },
@@ -118,17 +108,13 @@ const DayRemember = () => {
                 name: 'David',
                 relationship: 'Sếp',
                 img: socialPeople1,
-                event: {
-                  name: ''
-                },
+               
             },
             {
                 name: 'Kathy',
                 relationship: 'Bạn bè',
                 img: socialPeople2,
-                event: {
-                  name: ''
-                },
+                
             },
             
           ],
@@ -138,9 +124,7 @@ const DayRemember = () => {
         peoples: [
           {
               name: 'Một ai đó',
-              event: {
-                name: ''
-              },
+              
           },
           
         ],
@@ -310,10 +294,6 @@ const DayRemember = () => {
       store.dispatch("chooseGift");
     }
 
-    const onClickSignup = (e) => {
-      store.dispatch("signup");
-    }
-
     const onSheetClosed = () => {
         setModalChoosePeople(false);
     }
@@ -341,16 +321,18 @@ const DayRemember = () => {
     return (
         <div className="day-remember-page">
             {savedPeople === false ? 
-              <div className="day-remember-page-unsave">
-                  <Text className="day-remember-page-txt title-txt">Bạn chưa có danh sách những ngày cần nhớ</Text>
-                  <Text className="day-remember-page-txt add-day-txt">Thêm ngày cần nhớ tại đây</Text>
-                  <Button className="add-day-btn" onClick={openModalChoosePeople}>
-                      <Icon className="add-day-icon" zmp="zi-plus"></Icon>
-                  </Button>
-                  <div>
-                    <ModalChoosePeople relativePeoples={relativePeoples} onClickPeople={onClickPeople} showModalChoosePeople={showModalChoosePeople} onSheetClosed={onSheetClosed}/>
-                    <ModalCreateDay peopleChoose={peopleChoose} showModalCreateDay={showModalCreateDay} onSheetClosed={() => setShowModalCreateDay(false)} onClickChooseEvent={onClickChooseEvent} eventChoose={eventChoose} onShowDatePicker={() => setShowDatePicker(true)} onSavePeople={onSavePeople}/>
-                    <ModalChooseEvent showModalChooseEvent={showModalChooseEvent} onCloseModalEvent={onCloseModalEvent} chooseEventArr={chooseEventArr} onChooseEvent={onChooseEvent} peopleChoose={peopleChoose}/>
+              <div className="day-remember-page-unsaved">
+                  <div className='day-remember-page-unsaved-body'>
+                      <Text className="day-remember-page-txt title-txt">Bạn chưa có danh sách những ngày cần nhớ</Text>
+                      <Text className="day-remember-page-txt add-day-txt">Thêm ngày cần nhớ tại đây</Text>
+                      <Button className="add-day-btn" onClick={openModalChoosePeople}>
+                          <Icon className="add-day-icon" zmp="zi-plus"></Icon>
+                      </Button>
+                      <div>
+                        <ModalChoosePeople relativePeoples={relativePeoples} onClickPeople={onClickPeople} showModalChoosePeople={showModalChoosePeople} onSheetClosed={onSheetClosed}/>
+                        <ModalCreateDay peopleChoose={peopleChoose} showModalCreateDay={showModalCreateDay} onSheetClosed={() => setShowModalCreateDay(false)} onClickChooseEvent={onClickChooseEvent} eventChoose={eventChoose} onShowDatePicker={() => setShowDatePicker(true)} onSavePeople={onSavePeople}/>
+                        <ModalChooseEvent showModalChooseEvent={showModalChooseEvent} onCloseModalEvent={onCloseModalEvent} chooseEventArr={chooseEventArr} onChooseEvent={onChooseEvent} peopleChoose={peopleChoose}/>
+                      </div>
                   </div>
                   
               </div>

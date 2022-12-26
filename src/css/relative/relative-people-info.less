@@ -1,0 +1,101 @@
+.relative-people-info {
+  height: 100vh;
+  
+  overflow: scroll;
+    width: 100%;
+    .relative-people-info-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 20px;
+      .info-header-icon-back {
+          width: 8px;
+          height: 16px;
+      }
+      .info-header-icon-add {
+          width: 20px;
+          height: 20px;
+      }
+    }
+    .people-info {
+        justify-content: center;
+        text-align: center;
+        .people-name-relationship {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 4px 0;
+        }
+        .people-province {
+            color: #DA2128;
+        }
+    }
+    .special-dates {
+      padding: 10px 15px;
+      .special-dates-title {
+          font-size: 17px;
+          
+      }
+      .special-dates-list {
+        margin-bottom: 90px;
+        .special-dates-item {
+          margin: 20px 0;
+          display: flex;
+          width: 100%;
+          height: 107px;
+          .special-date-item-img {
+              margin-top: 12px;
+          }
+          .special-dates-item-left {
+              position: relative;
+              
+              background-color: #F2F2F2;
+              text-align: center;
+              
+              .special-date-item-date {
+                  font-weight: 500;
+              }
+              .special-date-item-date-left {
+                  font-size: 10px;
+                  color: #767676;
+              }
+              
+              .special-date-item-btn {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #DA2128;
+                color: #F2F2F2;
+                border: none;
+                outline: none;
+                font-size: 10px;
+                padding: 4px 0;
+              }
+          }
+          .special-dates-item-right {
+            background: #FFFFFF;
+            /* Gray 03 */
+            
+            border-width: 0.5px 0.5px 0.5px 0px;
+            border-style: solid;
+            border-color: #D9D9D9;
+            padding: 0 18px;
+            .special-dates-item-right-top {
+                padding: 10px 0;
+                border-bottom: 0.5px solid #D9D9D9;
+                font-size: 16px;
+                color: #DA2128;
+                font-weight: 600;
+            }
+            .special-dates-item-right-bottom {
+              .special-dates-description {
+                  margin-top: 8px;
+                  font-size: 12px;
+                  line-height: 14px;
+                  color: #767676;
+              }
+            }
+          }
+        }
+      }
+    }
+}

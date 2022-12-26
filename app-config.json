@@ -26,6 +26,8 @@
     "/login",
     "/remember",
     "/otp",
-    "/choose-gift"
+    "/choose-gift",
+    "/add-relative-people",
+    "/relative-people-info"
   ]
 }

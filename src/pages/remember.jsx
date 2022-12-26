@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Page,
   Title,
@@ -21,10 +21,16 @@ import mainScreen from "../static/img/mainScreen.png";
 import background from "../static/img/background.png";
 import DayRemember from "../components/remember/day-remember";
 import PeopleList from "../components/remember/people-list";
-
+import { zmp } from 'zmp-framework/react';
 
 
 const RememberPage = () => {
+
+  useEffect(() => {
+    // const zmproute = zmp.views.main.router.currentRoute;
+    // const isAddRelationship = zmproute.query('isAddRelationship');
+    // setIsAdd(isAddRelationship)
+  })
 
   return (
     <Page name='remember' className='remember-page'>
